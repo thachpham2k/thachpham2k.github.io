@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width">
+<link rel="icon" href=/fav.png type="image/gif">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      media="print" onload="this.media='all'" />
+<noscript>
+  <link
+          href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+          rel="stylesheet">
+</noscript>
+
+
+<link rel="stylesheet" href="/css/font.css" media="all">
+
+
+
+<meta property="og:title" content="Xây dựng website cá nhân với Hugo và GitHub" />
+<meta property="og:description" content="Trang web này được dựng lên như thế nào?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blogs/20230417-xay-dung-trang-web-voi-hugo-va-github/" /><meta property="article:section" content="blogs" />
+<meta property="article:published_time" content="2023-04-17T00:00:00+07:00" />
+<meta property="article:modified_time" content="2023-04-17T00:00:00+07:00" /><meta property="og:site_name" content="ThachPham" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Xây dựng website cá nhân với Hugo và GitHub"/>
+<meta name="twitter:description" content="Trang web này được dựng lên như thế nào?"/>
+
+
+<link rel="stylesheet" href="/bootstrap-5/css/bootstrap.min.css" media="all"><link rel="stylesheet" href="/css/header.css" media="all">
+<link rel="stylesheet" href="/css/footer.css" media="all">
+
+
+<link rel="stylesheet" href="/css/theme.css" media="all">
+
+
+
+
+<style>
+    :root {
+        --text-color: #343a40;
+        --text-secondary-color: #6c757d;
+        --background-color: #eaedf0;
+        --secondary-background-color: #64ffda1a;
+        --primary-color: #007bff;
+        --secondary-color: #f8f9fa;
+
+         
+        --text-color-dark: #e4e6eb;
+        --text-secondary-color-dark: #b0b3b8;
+        --background-color-dark: #18191a;
+        --secondary-background-color-dark: #212529;
+        --primary-color-dark: #ffffff;
+        --secondary-color-dark: #212529;
+    }
+    body {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        text-align: left;
+    }
+
+    html {
+        background-color: var(--background-color) !important;
+    }
+
+    body::-webkit-scrollbar {
+        width: .5em;
+        height: .5em;
+        background-color: var(--background-color);
+    }
+    
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px var(--background-color);
+        border-radius: 1rem;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        border-radius: 1rem;
+        background-color: var(--secondary-color);
+        outline: 1px solid var(--background-color);
+    }
+
+    #search-content::-webkit-scrollbar {
+        width: .5em;
+        height: .1em;
+        background-color: var(--background-color);
+    }
+</style>
+
+<meta name="description" content="Trang web này được dựng lên như thế nào?">
+<link rel="stylesheet" href="/css/single.css">
+
+
+<script defer src="/fontawesome-5/all-5.15.4.js"></script>
+
+  <title>
+Xây dựng website cá nhân với Hugo và GitHub | ThachPham
+
+  </title>
+</head>
+
+<body class="light">
+  
+  
+<script>
+    let localStorageValue = localStorage.getItem("pref-theme");
+    let mediaQuery = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    switch (localStorageValue) {
+        case "dark":
+            document.body.classList.add('dark');
+            break;
+        case "light":
+            document.body.classList.remove('dark');
+            break;
+        default:
+            if (mediaQuery) {
+                document.body.classList.add('dark');
+            }
+            break;
+    }
+</script>
+
+
+
+<header>
+    <nav class="pt-3 navbar navbar-expand-lg animate">
+        <div class="container-fluid mx-xs-2 mx-sm-5 mx-md-5 mx-lg-5">
+            
+            <a class="navbar-brand primary-font text-wrap" href="/">
+                
+                <img src="/fav.png" width="30" height="30"
+                    class="d-inline-block align-top">
+                ThachPham
+                
+            </a>
+
+            
+                <div>
+                    <input id="search" autocomplete="off" class="form-control mr-sm-2 d-none d-md-block" placeholder='Ctrl &#43; k to Search...'
+                        aria-label="Search" oninput="searchOnChange(event)">
+                </div>
+            
+
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <svg aria-hidden="true" height="24" viewBox="0 0 16 16" version="1.1" width="24" data-view-component="true">
+                    <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>
+                </svg>
+            </button>
+
+            
+            <div class="collapse navbar-collapse text-wrap primary-font" id="navbarContent">
+                <ul class="navbar-nav ms-auto text-center">
+                    
+                        <li class="nav-item navbar-text d-block d-md-none">
+                            <div class="nav-link">
+                                <input id="search" autocomplete="off" class="form-control mr-sm-2" placeholder='Ctrl &#43; k to Search...' aria-label="Search" oninput="searchOnChange(event)">
+                            </div>
+                        </li>
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/#about" aria-label="about">
+                            About Me
+                        </a>
+                    </li>
+                    
+
+                    
+
+                    
+
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/#achievements"
+                            aria-label="achievements">
+                            Achievements
+                        </a>
+                    </li>
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/#contact"
+                            aria-label="contact">
+                            Contact
+                        </a>
+                    </li>
+                    
+
+                    
+                    
+                    
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/blogs" title="Blog posts">
+                            
+                            Blog
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/gallery" title="Blog posts">
+                            
+                            Gallery
+                        </a>
+                    </li>
+                    
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        
+                        <div class="text-center">
+                            <button id="theme-toggle">
+                                <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                                </svg>
+                                <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="5"></circle>
+                                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </li>
+                    
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+</header>
+<div id="content">
+<section id="single">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-sm-12 col-md-12 col-lg-9">
+        <div class="pr-lg-4">
+          <div class="title mb-5">
+            <h1 class="text-center mb-4">Xây dựng website cá nhân với Hugo và GitHub</h1>
+            <div class="text-center">
+              Thạch Phạm 
+              <small>|</small>
+              Apr 17, 2023
+
+              
+              <span id="readingTime">
+                min read
+              </span>
+              
+            </div>
+          </div>
+          
+          <div class="featured-image">
+            <img class="img-fluid" src="/images/blogs/20230417-xay-dung-trang-web-voi-hugo-va-github.png" alt="Xây dựng website cá nhân với Hugo và GitHub">
+          </div>
+          
+          <article class="page-content  p-2">
+          <h2 id="ý-tưởng">Ý tưởng</h2>
+<p>Dự án xây dựng một trang web cá nhân là một ý tưởng đã từng ở trong đầu mình từ rất lâu. Là một dân IT, việc tạo ra một không gian riêng để chia sẻ những điều mà mình đam mê, những kiến thức mà mình tích luỹ, và những trải nghiệm mà mình đã trải qua luôn là một ý tưởng hấp dẫn đối với mình. Tuy nhiên, do công việc bận rộn và sự thiếu hụt kỹ năng lập trình frontend, dự án này đã bị hoãn lại trong một thời gian khá dài.</p>
+<p>Tuy nhiên, vào gần đây, do có cơ hội nghiên cứu và tìm hiểu về Hugo, và mình cảm thấy rất hứng thú và tự tin để triển khai ý tưởng của mình một lần nữa.</p>
+<p>Được đồng chí trong team admin VietAWS UG giới thiệu về Hugo lâu rồi nhưng gần đây mình mới được dịp tiếp xúc và tìm hiểu về nó, như thấy được đây là cơ hội để thực hiện ý tưởng, mình đã quyết định áp dụng ngay và xây dựng nên trang web này.</p>
+<h2 id="xây-dựng-trang-web-với-hugo">Xây dựng trang web với hugo</h2>
+<p>Để xây dựng trang web với Hugo, bước đầu tiên vẫn là nắm vững tổng quan về nó (Bài viết chỉ là tổng quan chứ không đi sâu về mặt kĩ thuật nên mọi người muốn hiểu rõ thì chịu khó đọc document nha).</p>
+<h3 id="cài-đặt-hugo">Cài đặt Hugo</h3>
+<p>Mình sử dụng ubuntu để host nên sử dụng apt package manager và câu lệnh như sau:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt install hugo
+</span></span></code></pre></div><p>Mọi người có thể tìm hiểu cách cái đặt ở trang <a href="https://gohugo.io/installation/">hugo installation</a></p>
+<h3 id="tạo-khung-sườn-cho-hugo">Tạo khung sườn cho hugo</h3>
+<p>Sau khi cài đặt thì đi đến tạo website đầu tiên với hugo</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>hugo new site mysite
+</span></span><span style="display:flex;"><span>cd mysite
+</span></span></code></pre></div><p>Hugo sẽ tạo 1 folder tên là mysite và đây là cấu trúc của folder mà hugo vừa tạo</p>
+<p><img src="./images/hugo%20mysite%20structure.png" alt="cấu trúc cơ bản của một hugo source"></p>
+<h3 id="themes">Themes</h3>
+<p>Thế là đã có khung sườn cho hugo. Công việc tiếp theo là tìm themes cho hắn. Vậy thì tìm themes ở đâu? ở trang <a href="https://themes.gohugo.io/">Hugo themes</a> này nè</p>
+<p>Sau khi lục lọi 1 hồi thì mình đã tìm đến <a href="https://hugo-profile.netlify.app/">hugo-profile theme</a></p>
+<p><img src="./images/hugo-profile%20theme.png" alt="Hugo-profile themes"></p>
+<p>Sau khi xem xét qua phần giao diện và hiển thị tiếng việt thì vẫn thấy cái theme này trông quá ư là ổn nên quất luôn😘😘</p>
+<h4 id="cấu-hình-hugo">Cấu hình hugo</h4>
+<p>Chọn được theme rồi thì thêm nó vào trong hugo project thôi. Về lệnh thì do có chút khác biệt về phần themes nên mình sử câu lệnh hơi khác so với trang <a href="https://gohugo.io/getting-started/quick-start/">Hugo quickstart</a> nên ai gặp lỗi thì có thể tham khảo document của Hugo</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cd mysite
+</span></span><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git submodule add https://github.com/gurusabarish/hugo-profile.git themes/hugo-profile
+</span></span><span style="display:flex;"><span>cp themes/hugo-profile/exampleSite/config.yaml ./
+</span></span><span style="display:flex;"><span>hugo server
+</span></span></code></pre></div><h4 id="bài-viết-đầu-tiên">Bài viết đầu tiên</h4>
+<p>Để lên bài đầu tiên thì đầu tiên vẫn phải là nghiên cứu qua cấu trúc của 1 blog được mình sử dụng</p>
+<p><img src="./images/blog-structure.png" alt="Cấu trúc của 1 bài blog"></p>
+<p>Muốn tìm hiểu kĩ hơn về phần này thì bạn có thể đọc qua về <a href="https://gohugo.io/content-management/page-bundles/">Hugo page bundles</a> trong document của hugo.</p>
+<p>Tìm hiều về cách cấu hình single page của tác giả theme</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>title: <span style="color:#e6db74">&#34;Xây dựng website cá nhân với Hugo và GitHub&#34;</span> <span style="color:#75715e"># này là title của trang web</span>
+</span></span><span style="display:flex;"><span>date: 2023-04-17T00:00:00+07:00 <span style="color:#75715e"># thời gian lên bài</span>
+</span></span><span style="display:flex;"><span>draft: false <span style="color:#75715e"># Cái này không biết nó có tác dụng gì</span>
+</span></span><span style="display:flex;"><span>author: <span style="color:#e6db74">&#34;Thạch Phạm&#34;</span>  <span style="color:#75715e"># Tên tác giả, được hiển thị ở dưới title</span>
+</span></span><span style="display:flex;"><span>tags: <span style="color:#75715e"># phần tag này được hiển thị ở phía bên phải bên dưới phần table of content</span>
+</span></span><span style="display:flex;"><span>  - Hugoweb
+</span></span><span style="display:flex;"><span>  - Github Action
+</span></span><span style="display:flex;"><span>  - StaticWeb
+</span></span><span style="display:flex;"><span>image: /images/blogs/20230417-xay-dung-trang-web-voi-hugo-va-github.png 
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ảnh bìa của bài viết được hiển thị ở phần danh sách bài viết và bên dưới title</span>
+</span></span><span style="display:flex;"><span>description: <span style="color:#e6db74">&#34;Trang web này được dựng lên như thế nào?&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Phần mô tả này hông thấy được hiển thị</span>
+</span></span><span style="display:flex;"><span>toc: <span style="color:#75715e"># này là viết tắt của table of content, mặc định là true (có thể thị phần table of content ở phía bên phải)</span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>&lt;Nội dung bài viết được viết ở đây&gt;
+</span></span></code></pre></div><p>Thế là xem như đã tạo xong 1 hugo project cơ bản.</p>
+<h3 id="vấn-đề-gặp-phải-và-giải-pháp">Vấn đề gặp phải và giải pháp</h3>
+<p>Nhìn thì đơn giản vậy thôi, chứ do là newbie bên mảng này nên gặp bug cũng khá nhiều</p>
+<h4 id="configtoml">config.toml</h4>
+<p>Này là do mình lên document của Hugo copy mà không chịu đọc kĩ thế là mình tạo hugo project bằng những lệnh sau:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>hugo new site website-src
+</span></span><span style="display:flex;"><span>cd website-src
+</span></span><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git submodule add https://github.com/gurusabarish/hugo-profile.git themes/hugo-profile
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;theme = &#39;hugo-profile&#39;&#34;</span> &gt;&gt; config.toml
+</span></span><span style="display:flex;"><span>cp themes/hugo-profile/exampleSite/config.yaml ./
+</span></span><span style="display:flex;"><span>hugo server
+</span></span></code></pre></div><p>Thế là tạo 2 file config, cơ mà hugo nó lấy cấu hình ở file <code>config.toml</code> nên trang chủ của web dù mình sửa thế nào cũng chả hiển thị cái gì</p>
+<p><img src="./images/loi-cau-hinh.png" alt="Lỗi cấu hình Hugo"></p>
+<p>Loay hoay 1 lúc thì mới tìm được vấn để, thế là phải xóa file <code>config.toml</code> đi.</p>
+<p>Mọi người muốn hiểu rõ hơn về phần cấu hình này thì có thể đọc <a href="https://gohugo.io/getting-started/configuration/">Hugo configuration</a></p>
+<h4 id="hiển-thị-ảnh-bìa">Hiển thị ảnh bìa</h4>
+<p>Hiển thị ảnh trong bài viết thì bình thường chứ hiển thị ảnh bìa thì nó hơi khác tí.</p>
+<p>Nếu để link banner trong thuộc tính images của page là  <code>images/banner.png</code> thì lúc hiển thị danh sách bài viết sẽ không thấy ảnh bìa còn nều để là <code>&lt;post&gt;/images/banner.png</code> thì vào bên trong bài viết sẽ gặp lỗi hiển thị ảnh bìa. Thế là phải đi lục lại bài gốc của tác giả và anh ấy sử dụng địa chỉ tuyệt đối dạng <code>/images/banner.png</code> loay hoay tìm thư mục <code>images</code> thì phát hiện nó ở trong thư mục <code>static</code> bằng ở root directory của hugo project. Kiểm tra ngay và thấy mọi thứ đã oke. Và mình đã tạo nên thư mục <code>blogs</code> bên trong <code>images</code> dùng để lưu các banner của bài viết.</p>
+<p><img src="./images/luu-anh-bia-cua-trang.png" alt="Cách lưu ảnh bìa của 1 trang"></p>
+<h4 id="mình-xóa-git-link-đến-resource-của-tác-giả">Mình xóa git link đến resource của tác giả</h4>
+<p>Thay vì sử dụng <code>git submodule add https://github.com/gurusabarish/hugo-profile.git themes/hugo-profile</code> thì mình lại dùng <code>git clone https://github.com/gurusabarish/hugo-profile.git</code> sau đó <code>rm -rf .git</code>.</p>
+<p>Bản thân có chỉnh sửa đôi chút qua theme source của tác giả nên sẽ không sử dụng <code>git submodule add ...</code> bởi như vậy thì github sẽ nhận diện git repo của người khác và sẽ tạo liên kết đến đó làm cho những chỉnh sửa của mình trở nên vô dụng.</p>
+<p>Hơi có chút không tôn trọng bản quyền của tác giả nhưng thôi vậy dùng tạm 😁 chân thành xin lỗi ha 😘.</p>
+<h2 id="triển-khai-website-lên-github-và-cấu-hình-github-action">Triển khai website lên github và cấu hình Github Action</h2>
+<p>Thế là xong phần web ở local, đưa em nó lên mạng thôi 😍</p>
+<h3 id="tạo-thachpham2kgithubio">Tạo thachpham2k.github.io</h3>
+<p>Phần này thì github viết hơi bị dễ hiểu luôn á, nên mọi người có thể tham khảo <a href="https://pages.github.com/">Tạo static website với github</a></p>
+<p>Tóm tắt thì việc cần làm ở đây là tạo 1 github repository dạng <code>&lt;username&gt;.github.io</code>.</p>
+<h3 id="tạo-website-src">Tạo website-src</h3>
+<p>Tương tự bước trước đó nhưng lần này thích đặt tên là gì cũng được, đây sẽ là nơi chưa source của hugo project.</p>
+<h3 id="tạo-personal-token">Tạo Personal Token</h3>
+<p>Personal token là gì? Tại sao lại phải tạo nó? Nó được sử dụng khi nào?</p>
+<ul>
+<li>
+<p>GitHub Personal Access Token (hoặc còn được gọi là GitHub Personal Token) là một loại mã truy cập được cung cấp bởi GitHub để xác thực và ủy quyền các hoạt động trên GitHub. Nó cho phép người dùng thực hiện các hoạt động như tạo, đọc, cập nhật và xóa các kho lưu trữ, quản lý issues, pull requests, quản lý các settings và các hoạt động khác liên quan đến tài khoản GitHub.</p>
+</li>
+<li>
+<p>PAT sẽ được sử dụng trong Github Action. Ở bước cuối cùng, khi muốn đẩy nội dung bên trong thư mục <code>public</code> của hugo qua thachpham2k.github.io repository thì phải cho Github bot quyền để nó được phép đẩy code lên đó. Và quyền đó sẽ được cấu hình đi kèm với PAT và github bot sẽ dùng nó để có quyền đẩy code lên repo.</p>
+</li>
+</ul>
+<p>Để tạo PAT thì:</p>
+<ol>
+<li>Truy cập <a href="https://github.com/settings/tokens">Github Personal Access Token</a> hoặc vào github -&gt; setting -&gt; developer setting -&gt; Personal Access Token -&gt; Tokens (classic)</li>
+<li>Tạo Token bằng cách click vào <code>Generate new token</code> rồi chọn <code>Generate new token (classic)</code> rồi nhập tên, cài đặt hạn sử dụng và quyền hạn cho nó.</li>
+</ol>
+<p>Sau khi tạo thì sẽ đến bước thêm Token vào <code>secret environment</code> để bot có thể biết mà sử dụng.</p>
+<ol>
+<li>Truy cập hugo project repository</li>
+<li>Setting -&gt; Secrets and variables -&gt; Actions</li>
+<li>Tại đây chọn <code>New repository secret</code> Ứng dụng sẽ đều hướng qua trang tạo environments</li>
+<li>Tại trang environments tạo 1 environments mới có tên là <code>GITHUB_TOKEN</code></li>
+<li>Bên trong giao diện của Environment tạo 1 <code>environment secret</code> có tên là <code>TOKEN</code> và nhập PAT được tạo trước đó và phần value</li>
+<li>Quanh lại giao diện Setting -&gt; Secrets and variables -&gt; Actions sẽ thấy 1 Enviromnet token được tạo có tên là <code>GITHUB_TOKEN</code></li>
+</ol>
+<p><img src="./images/environment_secret.png" alt="Environment secret đã được tạo"></p>
+<p>Trong file cấu hình github action, nếu muốn sử dụng github PAT thì phải khai báo dạng</p>
+<pre tabindex="0"><code>personal_token: ${{ secrets.GITHUB_TOKEN }}
+</code></pre><h3 id="tạo-github-deploy-key">Tạo Github Deploy key</h3>
+<p>Nếu không muốn sử dụng PAT thì có 1 tùy chọn khác đó là sử dụng ssh key. Để có thể dụng cách này đầu tiên cần có 1 ssh key có thể dụng cho github.</p>
+<p>Sử dụng ssh-keygen để tạo key</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ssh-keygen -t ed25519 -C <span style="color:#e6db74">&#34;phamthach2506@gmail.com&#34;</span>
+</span></span></code></pre></div><p><img src="./images/t%E1%BA%A1o%20ssh%20key.png" alt="Tạo ssh key"></p>
+<p>ở bước <code>Enter file in which to save the key (C:\Users\phamt/.ssh/id_ed25519): abcde</code> nếu không nhập gì thì ssh sẽ tạo ra key có tên là <code>id_ed25519</code> và <code>id_ed25519.pub</code> còn ở đây mình có nhập <code>abcde</code> thì sẽ tạo ra file key có tên là <code>id_abcde</code> và <code>id_abcde.pub</code>.</p>
+<p>Sau khi tạo key thì tiến hành cấu hình tren github</p>
+<ul>
+<li>Upload private key</li>
+</ul>
+<ol>
+<li>Truy cập repo hugo project (website-src)</li>
+<li>Setting -&gt; Secrets and variables -&gt; Actions</li>
+<li>Tại đây chọn <code>New repository secret</code></li>
+<li>Nhập name là <code>PRIVATEKEY</code> còn value là nội dung của file <code>id_adcde</code> vừa được tạo</li>
+</ol>
+<p><img src="./images/t%E1%BA%A1o%20deploy%20key.png" alt="Tạo PRIVATEKEY"></p>
+<ul>
+<li>Upload public key</li>
+</ul>
+<ol>
+<li>Truy cập website repo (thachpham2k.github.io)</li>
+<li>Setting -&gt; Deploy key</li>
+<li>Add deploy key</li>
+<li>Nhập title là PUBLICKEY và Key là nội dung của file <code>id_abcde.pub</code></li>
+<li>Click vào <code>Allow write access</code></li>
+</ol>
+<ul>
+<li>Sử dụng: Trong file cấu hình github action, nếu muốn sử dụng github PAT thì phải khai báo dạng</li>
+</ul>
+<pre tabindex="0"><code>deploy_key: ${{ secrets.privatekey }}
+</code></pre><h3 id="tạo-github-action">Tạo Github action</h3>
+<p>Đầu tiên là tìm đến source repo (website-src) và chọn đến tab Action</p>
+<p>Ở đây tìm đến mục tìm kiếm workflow và nhập <code>Simple workflow</code></p>
+<p>Bên trong file <code>blank.yml</code> chỉnh sửa nội dung thành như thế này</p>
+<pre tabindex="0"><code># This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the &#34;main&#34; branch
+  push:
+    branches: [ &#34;main&#34; ]
+  pull_request:
+    branches: [ &#34;main&#34; ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called &#34;build&#34;
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    permissions: write-all
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+        
+#       - name: Update themes
+#         run: git submodule update --init --recursive
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: &#39;latest&#39;
+          
+      - name: build
+        run: hugo -v
+      
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3.9.3
+        with:
+          # personal_token: ${{ secrets.GITHUB_TOKEN }}
+          deploy_key: ${{ secrets.privatekey }}
+          external_repository: thachpham2k/thachpham2k.github.io
+          publish_dir: ./public
+          # user_name: thachpham2k
+          # user_email: phamthach2506@gmail.com
+          publish_branch: master
+          allow_empty_commit: true
+</code></pre><p>Phần này có khá nhiều thứ, lười giải thích quá. Mọi người commit file và đợi kết quả thôi.</p>
+<h3 id="vấn-đề-gặp-phải-và-giải-pháp-1">Vấn đề gặp phải và giải pháp</h3>
+<p>Mục này xuất hiện gần như là điều hiển nhiên rồi, newbie mà, làm sao để tránh khỏi lỗi đây</p>
+<h4 id="sử-dụng-github-token">Sử dụng github token</h4>
+<p>Đầu tiên mình sử dụng github token (được recommend sử dụng vì tính bảo mật) nhưng mà ở project này Github token không đáp ứng đủ quyền (quyền write) nên mình phải chuyển qua xài PAT.</p>
+<h4 id="sử-dụng-pat">Sử dụng PAT</h4>
+<p>Vì Github token không đáp ứng được nhu cầu nên mình chuyển qua sử dụng PAT, tuy nhiên vấn đề gần tương tự đã xảy ra là mình cấu hình token và khi chạy cứ nhận về Permission deny. Lười test các permission quá nên mình chuyển qua xài Deploy key 🤣😂 để hôm này rảnh quay lại test cái PAT (hôm nào này hơi xa đó).</p>
+<h4 id="xây-dựng-file-build-cho-github-action">Xây dựng file build cho github action</h4>
+<p>Mình gặp chút vấn đề khi tạo file cấu hình git action.</p>
+<p>Cụ thể là khi lấy giá trị token mình sử dụng <code>personal_token: ${{ secrets.TOKEN }}</code> thay vì <code>personal_token: ${{ secrets.GITHUB_TOKEN }}</code> làm loay hoay chả biết sai ở đâu (công nhận lúc đó hơi ngáo thật).</p>
+<h2 id="lời-kết">Lời kết</h2>
+<p>Bài viết ghi lại phần nào quá trình mình tạo nên trang web này. Cũng là lần đầu chơi với Hugo cũng như git action và chưa dành nhiều thời gian nghiên cứu kĩ nên kiến thức sẽ có hơi sơ xài hay có thể sai mong mọi người có thể góp ý qua fb hoặc gmail mình để ở cuối trang web</p>
+<p>Chân thành cảm ơn đã đọc hế bài viết. BYE👋👋👋</p>
+
+          </article>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-12 col-lg-3">
+        <div class="sticky-sidebar">
+          
+          <aside class="toc">
+              <h5>
+                Table Of Contents
+              </h5>
+              <div class="toc-content">
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#ý-tưởng">Ý tưởng</a></li>
+    <li><a href="#xây-dựng-trang-web-với-hugo">Xây dựng trang web với hugo</a>
+      <ul>
+        <li><a href="#cài-đặt-hugo">Cài đặt Hugo</a></li>
+        <li><a href="#tạo-khung-sườn-cho-hugo">Tạo khung sườn cho hugo</a></li>
+        <li><a href="#themes">Themes</a></li>
+        <li><a href="#vấn-đề-gặp-phải-và-giải-pháp">Vấn đề gặp phải và giải pháp</a></li>
+      </ul>
+    </li>
+    <li><a href="#triển-khai-website-lên-github-và-cấu-hình-github-action">Triển khai website lên github và cấu hình Github Action</a>
+      <ul>
+        <li><a href="#tạo-thachpham2kgithubio">Tạo thachpham2k.github.io</a></li>
+        <li><a href="#tạo-website-src">Tạo website-src</a></li>
+        <li><a href="#tạo-personal-token">Tạo Personal Token</a></li>
+        <li><a href="#tạo-github-deploy-key">Tạo Github Deploy key</a></li>
+        <li><a href="#tạo-github-action">Tạo Github action</a></li>
+        <li><a href="#vấn-đề-gặp-phải-và-giải-pháp-1">Vấn đề gặp phải và giải pháp</a></li>
+      </ul>
+    </li>
+    <li><a href="#lời-kết">Lời kết</a></li>
+  </ul>
+</nav>
+              </div>
+          </aside>
+          
+
+          
+          <aside class="tags">
+            <h5>Tags</h5>
+            <ul class="tags-ul list-unstyled list-inline">
+              
+              <li class="list-inline-item"><a href="tags/hugoweb" target="_blank">Hugoweb</a></li>
+              
+              <li class="list-inline-item"><a href="tags/github-action" target="_blank">Github Action</a></li>
+              
+              <li class="list-inline-item"><a href="tags/staticweb" target="_blank">StaticWeb</a></li>
+              
+            </ul>
+          </aside>
+          
+
+          
+          <aside class="social">
+            <h5>Social</h5>
+            <div class="social-content">
+              <ul class="list-inline">
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href="https://twitter.com/share?text=X%c3%a2y%20d%e1%bb%b1ng%20website%20c%c3%a1%20nh%c3%a2n%20v%e1%bb%9bi%20Hugo%20v%c3%a0%20GitHub&url=%2fblogs%2f20230417-xay-dung-trang-web-voi-hugo-va-github%2f">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href="https://api.whatsapp.com/send?text=X%c3%a2y%20d%e1%bb%b1ng%20website%20c%c3%a1%20nh%c3%a2n%20v%e1%bb%9bi%20Hugo%20v%c3%a0%20GitHub: %2fblogs%2f20230417-xay-dung-trang-web-voi-hugo-va-github%2f">
+                    <i class="fab fa-whatsapp"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href='mailto:?subject=X%c3%a2y%20d%e1%bb%b1ng%20website%20c%c3%a1%20nh%c3%a2n%20v%e1%bb%9bi%20Hugo%20v%c3%a0%20GitHub&amp;body=Check%20out%20this%20site %2fblogs%2f20230417-xay-dung-trang-web-voi-hugo-va-github%2f'>
+                    <i class="fa fa-envelope"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </aside>
+          
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-9 p-4">
+        
+      </div>
+    </div>
+  </div>
+  <button class="p-2 px-3" onclick="topFunction()" id="topScroll">
+    <i class="fas fa-angle-up"></i>
+  </button>
+</section>
+
+
+<div class="progress">
+  <div id="scroll-progress-bar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<Script src="/js/scrollProgressBar.js"></script>
+
+
+<script>
+  var topScroll = document.getElementById("topScroll");
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      topScroll.style.display = "block";
+    } else {
+      topScroll.style.display = "none";
+    }
+  }
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+</script>
+
+
+<script src="/js/readingTime.js"></script>
+
+
+
+  </div><footer>
+    <div class="container py-3" id="recent-posts">
+    
+</div><div class="text-center pt-2">
+    
+    <span class="px-1">
+        <a href="https://github.com/thachpham2k" aria-label="github">
+            <svg xmlns="http://www.w3.org/2000/svg" width="2.7em" height="2.7em" viewBox="0 0 1792 1792">
+                <path
+                    d="M522 1352q-8 9-20-3-13-11-4-19 8-9 20 3 12 11 4 19zm-42-61q9 12 0 19-8 6-17-7t0-18q9-7 17 6zm-61-60q-5 7-13 2-10-5-7-12 3-5 13-2 10 5 7 12zm31 34q-6 7-16-3-9-11-2-16 6-6 16 3 9 11 2 16zm129 112q-4 12-19 6-17-4-13-15t19-7q16 5 13 16zm63 5q0 11-16 11-17 2-17-11 0-11 16-11 17-2 17 11zm58-10q2 10-14 14t-18-8 14-15q16-2 18 9zm964-956v960q0 119-84.5 203.5t-203.5 84.5h-224q-16 0-24.5-1t-19.5-5-16-14.5-5-27.5v-239q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-121-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-86-13.5q-44 113-7 204-79 85-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-40 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 103t.5 68q0 22-11 33.5t-22 13-33 1.5h-224q-119 0-203.5-84.5t-84.5-203.5v-960q0-119 84.5-203.5t203.5-84.5h960q119 0 203.5 84.5t84.5 203.5z" />
+
+                <metadata>
+                    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+                        <rdf:Description about="https://iconscout.com/legal#licenses"
+                            dc:title="Github, Online, Project, Hosting, Square"
+                            dc:description="Github, Online, Project, Hosting, Square" dc:publisher="Iconscout"
+                            dc:date="2016-12-14" dc:format="image/svg+xml" dc:language="en">
+                            <dc:creator>
+                                <rdf:Bag>
+                                    <rdf:li>Font Awesome</rdf:li>
+                                </rdf:Bag>
+                            </dc:creator>
+                        </rdf:Description>
+                    </rdf:RDF>
+                </metadata>
+            </svg>
+        </a>
+    </span>
+    
+
+    
+    <span class="px-1">
+        <a href="https://www.linkedin.com/in/phamthach/" aria-label="linkedin">
+            <svg xmlns="http://www.w3.org/2000/svg" width='2.4em' height='2.4em' fill="#fff" aria-label="LinkedIn"
+                viewBox="0 0 512 512">
+                <rect width="512" height="512" fill="#0077b5" rx="15%" />
+                <circle cx="142" cy="138" r="37" />
+                <path stroke="#fff" stroke-width="66" d="M244 194v198M142 194v198" />
+                <path d="M276 282c0-20 13-40 36-40 24 0 33 18 33 45v105h66V279c0-61-32-89-76-89-34 0-51 19-59 32" />
+            </svg>
+        </a>
+    </span>
+    
+
+    
+
+    
+    <a href="https://www.instagram.com/_thach.pham/" aria-label="instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px" height="48px">
+            <radialGradient id="yOrnnhliCrdS2gy~4tD8ma" cx="19.38" cy="42.035" r="44.899"
+                gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#fd5" />
+                <stop offset=".328" stop-color="#ff543f" />
+                <stop offset=".348" stop-color="#fc5245" />
+                <stop offset=".504" stop-color="#e64771" />
+                <stop offset=".643" stop-color="#d53e91" />
+                <stop offset=".761" stop-color="#cc39a4" />
+                <stop offset=".841" stop-color="#c837ab" />
+            </radialGradient>
+            <path fill="url(#yOrnnhliCrdS2gy~4tD8ma)"
+                d="M34.017,41.99l-20,0.019c-4.4,0.004-8.003-3.592-8.008-7.992l-0.019-20	c-0.004-4.4,3.592-8.003,7.992-8.008l20-0.019c4.4-0.004,8.003,3.592,8.008,7.992l0.019,20	C42.014,38.383,38.417,41.986,34.017,41.99z" />
+            <radialGradient id="yOrnnhliCrdS2gy~4tD8mb" cx="11.786" cy="5.54" r="29.813"
+                gradientTransform="matrix(1 0 0 .6663 0 1.849)" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#4168c9" />
+                <stop offset=".999" stop-color="#4168c9" stop-opacity="0" />
+            </radialGradient>
+            <path fill="url(#yOrnnhliCrdS2gy~4tD8mb)"
+                d="M34.017,41.99l-20,0.019c-4.4,0.004-8.003-3.592-8.008-7.992l-0.019-20	c-0.004-4.4,3.592-8.003,7.992-8.008l20-0.019c4.4-0.004,8.003,3.592,8.008,7.992l0.019,20	C42.014,38.383,38.417,41.986,34.017,41.99z" />
+            <path fill="#fff"
+                d="M24,31c-3.859,0-7-3.14-7-7s3.141-7,7-7s7,3.14,7,7S27.859,31,24,31z M24,19c-2.757,0-5,2.243-5,5	s2.243,5,5,5s5-2.243,5-5S26.757,19,24,19z" />
+            <circle cx="31.5" cy="16.5" r="1.5" fill="#fff" />
+            <path fill="#fff"
+                d="M30,37H18c-3.859,0-7-3.14-7-7V18c0-3.86,3.141-7,7-7h12c3.859,0,7,3.14,7,7v12	C37,33.86,33.859,37,30,37z M18,13c-2.757,0-5,2.243-5,5v12c0,2.757,2.243,5,5,5h12c2.757,0,5-2.243,5-5V18c0-2.757-2.243-5-5-5H18z" />
+        </svg>
+    </a>
+    
+
+    
+    <a href="https://www.facebook.com/thach.pham.dev/" aria-label="facebook">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px" height="48px">
+            <path fill="#3F51B5"
+                d="M42,37c0,2.762-2.238,5-5,5H11c-2.761,0-5-2.238-5-5V11c0-2.762,2.239-5,5-5h26c2.762,0,5,2.238,5,5V37z" />
+            <path fill="#FFF"
+                d="M34.368,25H31v13h-5V25h-3v-4h3v-2.41c0.002-3.508,1.459-5.59,5.592-5.59H35v4h-2.287C31.104,17,31,17.6,31,18.723V21h4L34.368,25z" />
+        </svg>
+    </a>
+    
+</div><div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-4 text-center">
+            <div class="pb-2">
+                <a href="" title="ThachPham">
+                    <img alt="Footer logo" src="/fav.png"
+                        height="40px" width="40px">
+                </a>
+            </div>
+            &copy; 2023  All rights reserved
+            <div class="text-secondary">
+                Made with
+                <span class="text-danger">
+                    &#10084;
+                </span>
+                and
+                <a href="https://github.com/gurusabarish/hugo-profile" target="_blank"
+                    title="Designed and developed by gurusabarish">
+                    Hugo Profile
+                </a>
+            </div>
+        </div>
+    </div>
+</div></footer><script src="/bootstrap-5/js/bootstrap.bundle.min.js"></script>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+
+</script>
+
+
+    <script src="/js/search.js"></script>
+
+
+
+
+
+
+
+
+  <section id="search-content" class="py-2">
+    <div class="container" id="search-results"></div>
+  </section>
+</body>
+
+</html>

@@ -6,67 +6,31 @@
     <description>Recent content in Tags on ThachPham</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 09 Dec 2022 19:53:33 +0530</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 17 Apr 2023 00:00:00 +0700</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>example</title>
-      <link>/tags/example/</link>
-      <pubDate>Fri, 09 Dec 2022 19:53:33 +0530</pubDate>
+      <title>Github Action</title>
+      <link>/tags/github-action/</link>
+      <pubDate>Mon, 17 Apr 2023 00:00:00 +0700</pubDate>
       
-      <guid>/tags/example/</guid>
+      <guid>/tags/github-action/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Markdown syntax</title>
-      <link>/tags/markdown-syntax/</link>
-      <pubDate>Fri, 09 Dec 2022 19:53:33 +0530</pubDate>
+      <title>Hugoweb</title>
+      <link>/tags/hugoweb/</link>
+      <pubDate>Mon, 17 Apr 2023 00:00:00 +0700</pubDate>
       
-      <guid>/tags/markdown-syntax/</guid>
+      <guid>/tags/hugoweb/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Mathjax</title>
-      <link>/tags/mathjax/</link>
-      <pubDate>Fri, 09 Dec 2022 19:53:33 +0530</pubDate>
+      <title>StaticWeb</title>
+      <link>/tags/staticweb/</link>
+      <pubDate>Mon, 17 Apr 2023 00:00:00 +0700</pubDate>
       
-      <guid>/tags/mathjax/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Sample</title>
-      <link>/tags/sample/</link>
-      <pubDate>Sat, 03 Apr 2021 23:29:21 +0530</pubDate>
-      
-      <guid>/tags/sample/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Emoji support</title>
-      <link>/tags/emoji-support/</link>
-      <pubDate>Sat, 03 Apr 2021 22:53:58 +0530</pubDate>
-      
-      <guid>/tags/emoji-support/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Placeholder text</title>
-      <link>/tags/placeholder-text/</link>
-      <pubDate>Sat, 03 Apr 2021 22:41:10 +0530</pubDate>
-      
-      <guid>/tags/placeholder-text/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Rich content</title>
-      <link>/tags/rich-content/</link>
-      <pubDate>Sat, 03 Apr 2021 19:53:33 +0530</pubDate>
-      
-      <guid>/tags/rich-content/</guid>
+      <guid>/tags/staticweb/</guid>
       <description></description>
     </item>
     
