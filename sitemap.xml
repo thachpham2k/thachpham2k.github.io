@@ -3,22 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>/</loc>
-    <lastmod>2023-04-17T00:00:00+07:00</lastmod>
+    <lastmod>2023-04-19T00:00:00+07:00</lastmod>
     <priority>0</priority>
   </url><url>
+    <loc>/tags/aws-codepipeline/</loc>
+    <lastmod>2023-04-19T00:00:00+07:00</lastmod>
+  </url><url>
     <loc>/blogs/</loc>
-    <lastmod>2023-04-17T00:00:00+07:00</lastmod>
+    <lastmod>2023-04-19T00:00:00+07:00</lastmod>
+  </url><url>
+    <loc>/tags/hugoweb/</loc>
+    <lastmod>2023-04-19T00:00:00+07:00</lastmod>
+  </url><url>
+    <loc>/tags/s3/</loc>
+    <lastmod>2023-04-19T00:00:00+07:00</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2023-04-19T00:00:00+07:00</lastmod>
+  </url><url>
+    <loc>/blogs/20230419-xay-dung-trang-web-voi-hugo-s3-awscodepipeline/</loc>
+    <lastmod>2023-04-19T00:00:00+07:00</lastmod>
   </url><url>
     <loc>/tags/github-action/</loc>
     <lastmod>2023-04-17T00:00:00+07:00</lastmod>
   </url><url>
-    <loc>/tags/hugoweb/</loc>
-    <lastmod>2023-04-17T00:00:00+07:00</lastmod>
-  </url><url>
     <loc>/tags/staticweb/</loc>
-    <lastmod>2023-04-17T00:00:00+07:00</lastmod>
-  </url><url>
-    <loc>/tags/</loc>
     <lastmod>2023-04-17T00:00:00+07:00</lastmod>
   </url><url>
     <loc>/blogs/20230417-xay-dung-trang-web-voi-hugo-va-github/</loc>

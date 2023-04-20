@@ -28,14 +28,16 @@
 
 
 
-<meta property="og:title" content="Hugoweb" />
-<meta property="og:description" content="Text about my cool site" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="/tags/hugoweb/" /><meta property="og:site_name" content="ThachPham" />
+<meta property="og:title" content="Xây dựng website cá nhân với Hugo, S3 và AWS Codepipeline" />
+<meta property="og:description" content="Sẽ ra sao nếu trang web được dựng bằng công cụ của AWS" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blogs/20230419-xay-dung-trang-web-voi-hugo-s3-awscodepipeline/" /><meta property="article:section" content="blogs" />
+<meta property="article:published_time" content="2023-04-19T00:00:00+07:00" />
+<meta property="article:modified_time" content="2023-04-19T00:00:00+07:00" /><meta property="og:site_name" content="ThachPham" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Hugoweb"/>
-<meta name="twitter:description" content="Text about my cool site"/>
+<meta name="twitter:title" content="Xây dựng website cá nhân với Hugo, S3 và AWS Codepipeline"/>
+<meta name="twitter:description" content="Sẽ ra sao nếu trang web được dựng bằng công cụ của AWS"/>
 
 
 <link rel="stylesheet" href="/bootstrap-5/css/bootstrap.min.css" media="all"><link rel="stylesheet" href="/css/header.css" media="all">
@@ -99,11 +101,14 @@
     }
 </style>
 
-<meta name="description" content="Hugoweb of ThachPham">
-<link rel="stylesheet" href="/css/list.css" media="all">
+<meta name="description" content="Sẽ ra sao nếu trang web được dựng bằng công cụ của AWS">
+<link rel="stylesheet" href="/css/single.css">
+
+
+<script defer src="/fontawesome-5/all-5.15.4.js"></script>
 
   <title>
-Hugoweb | ThachPham
+Xây dựng website cá nhân với Hugo, S3 và AWS Codepipeline | ThachPham
 
   </title>
 </head>
@@ -256,69 +261,193 @@ Hugoweb | ThachPham
     </nav>
 </header>
 <div id="content">
-<div class="container pt-5" id="list-page">
-    <h2 class="text-center pb-2">Hugoweb</h2>
-    <div class="row">
-        
-        <div class="col-lg-4 col-md-6 my-3">
-            <div class="card-columns">
-                <div class="card h-100">
-                    
-                    <div class="card-header">
-                        <a href="/blogs/20230419-xay-dung-trang-web-voi-hugo-s3-awscodepipeline/">
-                            <img src="/images/blogs/20230419-xay-dung-trang-web-voi-hugo-s3-awscodepipeline.png" class="card-img-top" alt="Xây dựng website cá nhân với Hugo, S3 và AWS Codepipeline">
-                        </a>
-                    </div>
-                    
-                    <div class="card-body bg-transparent p-4 shadow-sm">
-                        <a href="/blogs/20230419-xay-dung-trang-web-voi-hugo-s3-awscodepipeline/" class="primary-font card-title">
-                            <h5 class="card-title bg-transparent" title="Xây dựng website cá nhân với Hugo, S3 và AWS Codepipeline">Xây dựng website cá nhân …</h5>
-                        </a>
-                        <div class="card-text secondary-font">
-                            <p>Ý tưởng Hôm trước có lên bài về việc tạo static web với Hugo với công cụ là Github và Github Action, chúng ta có thể thực hiện tương tự với các dịch vụ của AWS. Ví dụ, ta có thể sử dụng Amazon S3 để lưu trữ trang web và Amazon CloudFront để phân phối nội dung. Ta cũng có thể sử dụng AWS CodePipeline …</p>
-                        </div>
-                    </div>
-                    <div class="mt-auto post-footer bg-transparent py-3">
-                        <span class="float-start bg-transparent">Apr 19, 2023</span>
-                        <a href="/blogs/20230419-xay-dung-trang-web-voi-hugo-s3-awscodepipeline/" class="float-end btn btn-outline-info btn-sm">Read</a>
-                    </div>
-                </div>
+<section id="single">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-sm-12 col-md-12 col-lg-9">
+        <div class="pr-lg-4">
+          <div class="title mb-5">
+            <h1 class="text-center mb-4">Xây dựng website cá nhân với Hugo, S3 và AWS Codepipeline</h1>
+            <div class="text-center">
+              Thạch Phạm 
+              <small>|</small>
+              Apr 19, 2023
+
+              
+              <span id="readingTime">
+                min read
+              </span>
+              
             </div>
+          </div>
+          
+          <div class="featured-image">
+            <img class="img-fluid" src="/images/blogs/20230419-xay-dung-trang-web-voi-hugo-s3-awscodepipeline.png" alt="Xây dựng website cá nhân với Hugo, S3 và AWS Codepipeline">
+          </div>
+          
+          <article class="page-content  p-2">
+          <h2 id="ý-tưởng">Ý tưởng</h2>
+<p>Hôm trước có lên bài về việc tạo static web với Hugo với công cụ là Github và Github Action, chúng ta có thể thực hiện tương tự với các dịch vụ của AWS. Ví dụ, ta có thể sử dụng Amazon S3 để lưu trữ trang web và Amazon CloudFront để phân phối nội dung. Ta cũng có thể sử dụng AWS CodePipeline và AWS CodeBuild để tự động hóa việc triển khai trang web mỗi khi có sự thay đổi trong mã nguồn.</p>
+<p>Bài viết này sẽ đi sâu vào việc sử dụng các dịch vụ của AWS để hộ trợ việc tạo static web với hugo.</p>
+<h2 id="tạo-s3-static-web">Tạo S3 Static web</h2>
+<p>Bước đầu tiên vẫn là tạo trang web trước, nội dung tính sau 😂. Để host trang web tĩnh trên AWS, chúng ta có thể sử dụng tính năng Static website hosting của Amazon S3. Tuy nhiên, trước khi sử dụng tính năng này, chúng ta cần phải tạo một bucket S3 để lưu trữ các file của trang web. Sau đó, ta có thể cấu hình các quyền truy cập cho bucket S3 để cho phép trang web được truy cập từ bên ngoài. Việc sử dụng tính năng <strong>Static website hosting</strong> của S3 sẽ giúp cho việc host trang web trở nên đơn giản và hiệu quả hơn.</p>
+<h3 id="tạo-s3-bucket">Tạo S3 Bucket</h3>
+<p>Việc cần thực hiện là tạo một S3 bucket với tên và tag nhất định. Tuy nhiên, để dễ dàng cho việc lưu trữ và chia sẻ website, cần phải kích hoạt <strong>Object Ownership</strong> và vô hiệu hóa các tùy chọn <strong>Block Public Access</strong> trên bucket.</p>
+<p><img src="./images/s3-acls_enabled.png" alt="Kích hoạt Object Ownership"></p>
+<p><img src="./images/S3-Block-Public-Access.png" alt="Tắt tùy chọn Block Public Access"></p>
+<h3 id="s3-static-web-hosting">S3 Static Web Hosting</h3>
+<p>Để kích hoạt tính năng này, trước tiên bạn cần chọn vào S3 bucket muốn bật tính năng, sau đó chọn tab Properties, kéo xuống cuối trang và chọn Enable Static Web Hosting, sau đó nhập <code>index.html</code> vào phần <strong>Index document</strong>.</p>
+<p><img src="./images/s3-static-web-hosting.png" alt="Bật tính năng S3 static web hosting"></p>
+<p>Tuy nhiên, khi truy cập vào S3 static web bằng tên miền, có thể gặp phải lỗi 403. Lỗi này xảy ra do S3 bucket chưa được public, do đó người dùng bên ngoài không thể truy cập được.</p>
+<p><img src="./images/s3-static-web-403-response.png" alt="Lỗi 403 khi truy cập S3 static web"></p>
+<h3 id="thêm-quyền-getobject">Thêm quyền getObject</h3>
+<p>Để cho người dùng có thể truy cập vào trang web static trên S3 mà không gặp phải lỗi 403, cần phải thêm quyền truy cập cho bucket. Việc này có thể được thực hiện bằng cách truy cập vào S3 bucket, chọn tab <strong>Permissions</strong>, và chọn phần <strong>Bucket policy</strong>. Sau đó, nhập đoạn mã sau vào phần policy (nhớ điền S3 Bucket name vào phần ARN nha).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&#34;Statement&#34;</span>: [
+</span></span><span style="display:flex;"><span>		{
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;Statement1&#34;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&#34;Principal&#34;</span>: <span style="color:#e6db74">&#34;*&#34;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>				<span style="color:#e6db74">&#34;s3:GetObject&#34;</span>
+</span></span><span style="display:flex;"><span>			],
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&#34;Resource&#34;</span>: [
+</span></span><span style="display:flex;"><span>				<span style="color:#e6db74">&#34;arn:aws:s3:::&lt;S3 Bucket name&gt;/*&#34;</span>
+</span></span><span style="display:flex;"><span>			]
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Lúc này thử truy cập bằng S3 Static web url thì sẽ gặp lỗi 404 Not Found vì nội dung của trang web đang bị trống (không tìm thấy file index.html)</p>
+<p><img src="./images/s3-static-web-404-response.png" alt="Lỗi 404 khi truy cập S3 static web"></p>
+<h2 id="tạo-aws-codepipeline">Tạo AWS Codepipeline</h2>
+<p>Để tự động hóa việc triển khai trang web mỗi khi có sự thay đổi trong mã nguồn (được lưu trữ trong Code Commit) chúng ta có thể sử dụng AWS CodePipeline và AWS CodeBuild.</p>
+<h3 id="aws-codecommit">AWS CodeCommit</h3>
+<p>Đây là nơi sẽ chứa mã nguồn của web (Github in AWS).</p>
+<p>Tạo file <code>buildspec.yml</code></p>
+<h3 id="aws-codebuild">AWS CodeBuild</h3>
+<h3 id="aws-codepipeline">AWS CodePipeline</h3>
+<h2 id="vấn-đề-gặp-phải-và-giải-pháp">Vấn đề gặp phải và giải pháp</h2>
+<h2 id="lời-kết">Lời kết</h2>
+
+          </article>
         </div>
-        
-        <div class="col-lg-4 col-md-6 my-3">
-            <div class="card-columns">
-                <div class="card h-100">
-                    
-                    <div class="card-header">
-                        <a href="/blogs/20230417-xay-dung-trang-web-voi-hugo-va-github/">
-                            <img src="/images/blogs/20230417-xay-dung-trang-web-voi-hugo-va-github.png" class="card-img-top" alt="Xây dựng website cá nhân với Hugo và GitHub">
-                        </a>
-                    </div>
-                    
-                    <div class="card-body bg-transparent p-4 shadow-sm">
-                        <a href="/blogs/20230417-xay-dung-trang-web-voi-hugo-va-github/" class="primary-font card-title">
-                            <h5 class="card-title bg-transparent" title="Xây dựng website cá nhân với Hugo và GitHub">Xây dựng website cá nhân …</h5>
-                        </a>
-                        <div class="card-text secondary-font">
-                            <p>Ý tưởng Dự án xây dựng một trang web cá nhân là một ý tưởng đã từng ở trong đầu mình từ rất lâu. Là một dân IT, việc tạo ra một không gian riêng để chia sẻ những điều mà mình đam mê, những kiến thức mà mình tích luỹ, và những trải nghiệm mà mình đã trải qua luôn là một ý tưởng hấp dẫn đối với mình. …</p>
-                        </div>
-                    </div>
-                    <div class="mt-auto post-footer bg-transparent py-3">
-                        <span class="float-start bg-transparent">Apr 17, 2023</span>
-                        <a href="/blogs/20230417-xay-dung-trang-web-voi-hugo-va-github/" class="float-end btn btn-outline-info btn-sm">Read</a>
-                    </div>
-                </div>
+      </div>
+      <div class="col-sm-12 col-md-12 col-lg-3">
+        <div class="sticky-sidebar">
+          
+          <aside class="toc">
+              <h5>
+                Table Of Contents
+              </h5>
+              <div class="toc-content">
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#ý-tưởng">Ý tưởng</a></li>
+    <li><a href="#tạo-s3-static-web">Tạo S3 Static web</a>
+      <ul>
+        <li><a href="#tạo-s3-bucket">Tạo S3 Bucket</a></li>
+        <li><a href="#s3-static-web-hosting">S3 Static Web Hosting</a></li>
+        <li><a href="#thêm-quyền-getobject">Thêm quyền getObject</a></li>
+      </ul>
+    </li>
+    <li><a href="#tạo-aws-codepipeline">Tạo AWS Codepipeline</a>
+      <ul>
+        <li><a href="#aws-codecommit">AWS CodeCommit</a></li>
+        <li><a href="#aws-codebuild">AWS CodeBuild</a></li>
+        <li><a href="#aws-codepipeline">AWS CodePipeline</a></li>
+      </ul>
+    </li>
+    <li><a href="#vấn-đề-gặp-phải-và-giải-pháp">Vấn đề gặp phải và giải pháp</a></li>
+    <li><a href="#lời-kết">Lời kết</a></li>
+  </ul>
+</nav>
+              </div>
+          </aside>
+          
+
+          
+          <aside class="tags">
+            <h5>Tags</h5>
+            <ul class="tags-ul list-unstyled list-inline">
+              
+              <li class="list-inline-item"><a href="tags/hugoweb" target="_blank">Hugoweb</a></li>
+              
+              <li class="list-inline-item"><a href="tags/aws-codepipeline" target="_blank">AWS Codepipeline</a></li>
+              
+              <li class="list-inline-item"><a href="tags/s3" target="_blank">S3</a></li>
+              
+            </ul>
+          </aside>
+          
+
+          
+          <aside class="social">
+            <h5>Social</h5>
+            <div class="social-content">
+              <ul class="list-inline">
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href="https://twitter.com/share?text=X%c3%a2y%20d%e1%bb%b1ng%20website%20c%c3%a1%20nh%c3%a2n%20v%e1%bb%9bi%20Hugo%2c%20S3%20v%c3%a0%20AWS%20Codepipeline&url=%2fblogs%2f20230419-xay-dung-trang-web-voi-hugo-s3-awscodepipeline%2f">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href="https://api.whatsapp.com/send?text=X%c3%a2y%20d%e1%bb%b1ng%20website%20c%c3%a1%20nh%c3%a2n%20v%e1%bb%9bi%20Hugo%2c%20S3%20v%c3%a0%20AWS%20Codepipeline: %2fblogs%2f20230419-xay-dung-trang-web-voi-hugo-s3-awscodepipeline%2f">
+                    <i class="fab fa-whatsapp"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href='mailto:?subject=X%c3%a2y%20d%e1%bb%b1ng%20website%20c%c3%a1%20nh%c3%a2n%20v%e1%bb%9bi%20Hugo%2c%20S3%20v%c3%a0%20AWS%20Codepipeline&amp;body=Check%20out%20this%20site %2fblogs%2f20230419-xay-dung-trang-web-voi-hugo-s3-awscodepipeline%2f'>
+                    <i class="fa fa-envelope"></i>
+                  </a>
+                </li>
+              </ul>
             </div>
+          </aside>
+          
         </div>
-        
-        <div class="row justify-content-center">
-            <div class="col-auto m-3">
-                
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-9 p-4">
+        
+      </div>
+    </div>
+  </div>
+  <button class="p-2 px-3" onclick="topFunction()" id="topScroll">
+    <i class="fas fa-angle-up"></i>
+  </button>
+</section>
+
+
+<div class="progress">
+  <div id="scroll-progress-bar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
+<Script src="/js/scrollProgressBar.js"></script>
+
+
+<script>
+  var topScroll = document.getElementById("topScroll");
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      topScroll.style.display = "block";
+    } else {
+      topScroll.style.display = "none";
+    }
+  }
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+</script>
+
+
+<script src="/js/readingTime.js"></script>
+
+
 
   </div><footer>
     <div class="container py-3" id="recent-posts">
