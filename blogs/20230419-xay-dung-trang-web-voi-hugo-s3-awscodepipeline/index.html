@@ -294,8 +294,8 @@ Xây dựng website cá nhân với Hugo, S3 và AWS Codepipeline | ThachPham
           
           <article class="page-content  p-2">
           <h2 id="ý-tưởng">Ý tưởng</h2>
-<p>Hôm trước có lên bài về việc tạo static web với Hugo với công cụ là Github và Github Action, chúng ta có thể thực hiện tương tự với các dịch vụ của AWS. Ví dụ, ta có thể sử dụng Amazon S3 để lưu trữ trang web và Amazon CloudFront để phân phối nội dung. Ta cũng có thể sử dụng AWS CodePipeline và AWS CodeBuild để tự động hóa việc triển khai trang web mỗi khi có sự thay đổi trong mã nguồn.</p>
-<p>Bài viết này sẽ đi sâu vào việc sử dụng các dịch vụ của AWS để hộ trợ việc tạo static web với hugo.</p>
+<p>Hôm trước có lên bài về việc tạo static web với Hugo với công cụ là Github và Github Action, chúng ta có thể thực hiện tương tự với các dịch vụ của AWS. Ví dụ, ta có thể sử dụng Amazon S3 để lưu trữ trang web và Amazon CloudFront để phân phối nội dung. Ta cũng có thể sử dụng AWS CodePipeline và AWS CodeBuild để tự động hóa việc triển khai trang web mỗi khi có sự thay đổi trong mã nguồn. Đây là một cách rất tiện lợi và hiệu quả để quản lý và cập nhật website của bạn mà không cần phải lo lắng về việc cài đặt và vận hành server.</p>
+<p>Bài viết này sẽ đi sâu vào việc sử dụng các dịch vụ của AWS để hộ trợ việc triển khai một website tĩnh sử dụng Hugo lên S3 Static Web.</p>
 <h2 id="tạo-s3-static-web">Tạo S3 Static web</h2>
 <p>Bước đầu tiên vẫn là tạo trang web trước, nội dung tính sau 😂. Để host trang web tĩnh trên AWS, chúng ta có thể sử dụng tính năng Static website hosting của Amazon S3. Tuy nhiên, trước khi sử dụng tính năng này, chúng ta cần phải tạo một bucket S3 để lưu trữ các file của trang web. Sau đó, ta có thể cấu hình các quyền truy cập cho bucket S3 để cho phép trang web được truy cập từ bên ngoài. Việc sử dụng tính năng <strong>Static website hosting</strong> của S3 sẽ giúp cho việc host trang web trở nên đơn giản và hiệu quả hơn.</p>
 <h3 id="tạo-s3-bucket">Tạo S3 Bucket</h3>
@@ -330,12 +330,63 @@ Xây dựng website cá nhân với Hugo, S3 và AWS Codepipeline | ThachPham
 <h2 id="tạo-aws-codepipeline">Tạo AWS Codepipeline</h2>
 <p>Để tự động hóa việc triển khai trang web mỗi khi có sự thay đổi trong mã nguồn (được lưu trữ trong Code Commit) chúng ta có thể sử dụng AWS CodePipeline và AWS CodeBuild.</p>
 <h3 id="aws-codecommit">AWS CodeCommit</h3>
-<p>Đây là nơi sẽ chứa mã nguồn của web (Github in AWS).</p>
-<p>Tạo file <code>buildspec.yml</code></p>
+<p>Đã có nơi để lưu các file tĩnh của trang web, tiếp theo sẽ tạo một repository trên CodeCommit để lưu trữ mã nguồn của website Hugo. Bạn có thể sử dụng giao diện web hoặc dòng lệnh để tạo repository (Ở đây mình xài console cho nó thân thiện nhé 😁).</p>
+<p>Đầu tiên truy cập giao diện console của AWS và tìm đến phần <a href="https://ap-southeast-1.console.aws.amazon.com/codesuite/codecommit/repositories">Commit</a></p>
+<p>Chọn vào phần <strong>Create Repository</strong> và nhập thông tin vào để tạo 1 repository thôi (🤣Đơn giản mà🤣🤣).</p>
+<p><img src="./images/CodeCommit-create-repo.png" alt="Tạo CodeCommit Repository"></p>
+<p>Sau khi tạo xong, bạn cần clone repository về máy tính của bạn và copy các file của website Hugo vào thư mục của repository.</p>
+<p><img src="./images/CodeCommit-gitcommit.png" alt="Commit code to Codecommit"></p>
+<p>Vấn đề là đâu phải muốn commit là được commit đâu. Phải đăng nhập nữa. Đầu tiên cần phải sử dụng AccessToken để đăng nhập vào AWS Cli (dùng lệnh <code>aws configure</code>) sau đó sử dụng câu lệnh này để đăng nhập:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git config --global credential.helper <span style="color:#e6db74">&#39;!aws codecommit credential-helper $@&#39;</span>
+</span></span><span style="display:flex;"><span>git config --global credential.UseHttpPath true
+</span></span></code></pre></div><p><img src="./images/CodeCommit-login-%26-push.png" alt="Login to AWS CodeCommit"></p>
+<p>Phần này mình bỏ qua về Hugo resource, nếu muốn tìm hiểu thêm bạn chịu khó xem lại bài <a href="https://thachpham2k.github.io/blogs/20230417-xay-dung-trang-web-voi-hugo-va-github/#t%E1%BA%A1o-website-src">Blog</a> trước của mình nhé.</p>
 <h3 id="aws-codebuild">AWS CodeBuild</h3>
+<p>Trước khi đi vào tạo CodeBuild thì phải xây dựng file build trước đã. Tạo 1 file có tên là <code>buildspec.yml</code> và lưu nó ở trong repository được tạo ở bước trước. Và nội dung của file build như sau:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#ae81ff">0.2</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">phases</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">install</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">commands</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">apt-get update -y</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">echo Installing hugo</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">curl -L -o hugo.deb https://github.com/gohugoio/hugo/releases/download/v0.111.3/hugo_0.111.3_linux-amd64.deb</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">dpkg -i hugo.deb</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">hugo version</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">build</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">commands</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">hugo -v</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">artifacts</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">files</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#e6db74">&#39;**/*&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">base-directory</span>: <span style="color:#e6db74">&#39;public&#39;</span>
+</span></span></code></pre></div><p>Tạo file build xong rồi thì tạo CodeBuild thôi. Để tạo CodeBuild thì đầu tiên là truy cập đến <a href="https://ap-southeast-1.console.aws.amazon.com/codesuite/codebuild/projects">CodeBuild</a> sau đó chọn <strong>Create build project</strong> với các thông tin như:</p>
+<p>Cấu hình CodeBuild</p>
+<p><img src="./images/CodeBuild-config.png" alt="Tạo CodeBuild - build config"></p>
+<p>Mã nguồn</p>
+<p><img src="./images/CodeBuild-src.png" alt="Tạo CodeBuild - source"></p>
+<p>Môi trường build:</p>
+<p><img src="./images/CodeBuild-env.png" alt="Tạo CodeBuild - environment"></p>
+<p>Ngoài ra còn có vị trí file buildspec,&hellip; Và cuối cùng là tạo CodeBuild</p>
+<p><img src="./images/CodeBuild-create.png" alt="Tạo CodeBuild - tạo"></p>
+<p>Tạo xong thì test thử thôi</p>
+<p><img src="./images/CodeBuild-run.png" alt="CodeBuild - chạy thử"></p>
 <h3 id="aws-codepipeline">AWS CodePipeline</h3>
+<p>Tạo một pipeline trên CodePipeline để tự động hóa quá trình triển khai website. Để cấu hình CodePipeline cần phải cấu hình các thành phần sau:</p>
+<p>tên pipeline</p>
+<p><img src="./images/CodePipeline-config-stage.png" alt="CodePipeline - config stage"></p>
+<p>Mã nguồn (CodeCommit)</p>
+<p><img src="./images/CodePipeline-source-stage.png" alt="CodePipeline - source stage"></p>
+<p>giai đoạn build (CodeBuild)</p>
+<p><img src="./images/CodePipeline-build-stage.png" alt="CodePipeline - build stage"></p>
+<p>giai đoạn deploy (S3)</p>
+<p><img src="./images/CodePipeline-deploy-stage.png" alt="CodePipeline - deploy stage"></p>
+<p>Sau khi tạo xong pipeline, bạn có thể kiểm tra trạng thái của các giai đoạn và xem kết quả triển khai trên S3.</p>
+<p>Kiểm tra xem các tệp đã được cài đặt và chuyển sang S3 chưa</p>
+<p><img src="./images/s3-success.png" alt="Check CodePipeline"></p>
 <h2 id="vấn-đề-gặp-phải-và-giải-pháp">Vấn đề gặp phải và giải pháp</h2>
+<h3 id="tùy-chọn-extract-file-before-deploy">Tùy chọn <strong>Extract file before deploy</strong></h3>
 <h2 id="lời-kết">Lời kết</h2>
+<p>Đến đây, bạn đã hoàn thành việc triển khai website Hugo lên S3 Static Web bằng CodeCommit, CodeBuild và CodePipeline. Bạn có thể thử thay đổi nội dung của website trên CodeCommit và xem pipeline tự động chạy và cập nhật website trên S3. Chúc các bạn thành công!</p>
 
           </article>
         </div>
@@ -365,7 +416,11 @@ Xây dựng website cá nhân với Hugo, S3 và AWS Codepipeline | ThachPham
         <li><a href="#aws-codepipeline">AWS CodePipeline</a></li>
       </ul>
     </li>
-    <li><a href="#vấn-đề-gặp-phải-và-giải-pháp">Vấn đề gặp phải và giải pháp</a></li>
+    <li><a href="#vấn-đề-gặp-phải-và-giải-pháp">Vấn đề gặp phải và giải pháp</a>
+      <ul>
+        <li><a href="#tùy-chọn-extract-file-before-deploy">Tùy chọn <strong>Extract file before deploy</strong></a></li>
+      </ul>
+    </li>
     <li><a href="#lời-kết">Lời kết</a></li>
   </ul>
 </nav>
