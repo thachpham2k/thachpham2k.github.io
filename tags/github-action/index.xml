@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Github Action on ThachPham</title>
-    <link>https://thachpham2k.github.io/tags/github-action/</link>
+    <link>/tags/github-action/</link>
     <description>Recent content in Github Action on ThachPham</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 17 Apr 2023 00:00:00 +0700</lastBuildDate><atom:link href="https://thachpham2k.github.io/tags/github-action/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 17 Apr 2023 00:00:00 +0700</lastBuildDate><atom:link href="/tags/github-action/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Xây dựng website cá nhân với Hugo và GitHub</title>
-      <link>https://thachpham2k.github.io/blogs/20230417-xay-dung-trang-web-voi-hugo-va-github/</link>
+      <link>/blogs/20230417-xay-dung-trang-web-voi-hugo-va-github/</link>
       <pubDate>Mon, 17 Apr 2023 00:00:00 +0700</pubDate>
       
-      <guid>https://thachpham2k.github.io/blogs/20230417-xay-dung-trang-web-voi-hugo-va-github/</guid>
+      <guid>/blogs/20230417-xay-dung-trang-web-voi-hugo-va-github/</guid>
       <description>Ý tưởng Dự án xây dựng một trang web cá nhân là một ý tưởng đã từng ở trong đầu mình từ rất lâu. Là một dân IT, việc tạo ra một không gian riêng để chia sẻ những điều mà mình đam mê, những kiến thức mà mình tích luỹ, và những trải nghiệm mà mình đã trải qua luôn là một ý tưởng hấp dẫn đối với mình. Tuy nhiên, do công việc bận rộn và sự thiếu hụt kỹ năng lập trình frontend, dự án này đã bị hoãn lại trong một thời gian khá dài.</description>
     </item>
     

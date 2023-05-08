@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Xây dựng website cá nhân với Hugo và GitHub on ThachPham</title>
-    <link>https://thachpham2k.github.io/blogs/20230417-xay-dung-trang-web-voi-hugo-va-github/</link>
+    <link>/blogs/20230417-xay-dung-trang-web-voi-hugo-va-github/</link>
     <description>Recent content in Xây dựng website cá nhân với Hugo và GitHub on ThachPham</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 17 Apr 2023 00:00:00 +0700</lastBuildDate><atom:link href="https://thachpham2k.github.io/blogs/20230417-xay-dung-trang-web-voi-hugo-va-github/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 17 Apr 2023 00:00:00 +0700</lastBuildDate><atom:link href="/blogs/20230417-xay-dung-trang-web-voi-hugo-va-github/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
