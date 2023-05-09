@@ -328,15 +328,25 @@ Xây dựng website cá nhân với Hugo, S3 và AWS Codepipeline | ThachPham
 </span></span></code></pre></div><p>Lúc này thử truy cập bằng S3 Static web url thì sẽ gặp lỗi 404 Not Found vì nội dung của trang web đang bị trống (không tìm thấy file index.html)</p>
 <p><img src="./images/s3-static-web-404-response.png" alt="Lỗi 404 khi truy cập S3 static web"></p>
 <h2 id="tạo-aws-codepipeline">Tạo AWS Codepipeline</h2>
-<p>Để tự động hóa việc triển khai trang web mỗi khi có sự thay đổi trong mã nguồn (được lưu trữ trong Code Commit) chúng ta có thể sử dụng AWS CodePipeline và AWS CodeBuild.</p>
+<p>Bạn muốn triển khai trang web tự động mỗi khi cập nhật mã nguồn (trên Code Commit)? Hãy dùng AWS CodePipeline và AWS CodeBuild nhé!</p>
 <h3 id="aws-codecommit">AWS CodeCommit</h3>
-<p>Đã có nơi để lưu các file tĩnh của trang web, tiếp theo sẽ tạo một repository trên CodeCommit để lưu trữ mã nguồn của website Hugo. Bạn có thể sử dụng giao diện web hoặc dòng lệnh để tạo repository (Ở đây mình xài console cho nó thân thiện nhé 😁).</p>
+<p>Trước tiên, bạn cần có một nơi chứa các file tĩnh của trang web. Bạn có thể tạo một repository trên CodeCommit để lưu mã nguồn của website Hugo. Bạn có thể dùng giao diện web hoặc dòng lệnh để làm việc này (Ở đây mình xài console cho nó thân thiện 😁).</p>
 <p>Đầu tiên truy cập giao diện console của AWS và tìm đến phần <a href="https://ap-southeast-1.console.aws.amazon.com/codesuite/codecommit/repositories">Commit</a></p>
-<p>Chọn vào phần <strong>Create Repository</strong> và nhập thông tin vào để tạo 1 repository thôi (🤣Đơn giản mà🤣🤣).</p>
+<p>Tiếp theo, bạn nhấn vào <strong>Create Repository</strong> và điền thông tin để tạo repository (🤣Easy game🤣🤣).</p>
 <p><img src="./images/CodeCommit-create-repo.png" alt="Tạo CodeCommit Repository"></p>
-<p>Sau khi tạo xong, bạn cần clone repository về máy tính của bạn và copy các file của website Hugo vào thư mục của repository.</p>
-<p><img src="./images/CodeCommit-gitcommit.png" alt="Commit code to Codecommit"></p>
-<p>Vấn đề là đâu phải muốn commit là được commit đâu. Phải đăng nhập nữa. Đầu tiên cần phải sử dụng AccessToken để đăng nhập vào AWS Cli (dùng lệnh <code>aws configure</code>) sau đó sử dụng câu lệnh này để đăng nhập:</p>
+<p>Khi đã tạo xong, bạn clone repository về máy của bạn và chép các file của website Hugo vào thư mục repository. Hướng dẫn vậy nhưng mình làm hơi khác tí, đầu tiên mình clone resource từ github về sau đó thay đổi cấu hình của git cho phù hợp và sử dụng bằng các lệnh</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git clone git@github.com:thachpham2k/website-src.git
+</span></span><span style="display:flex;"><span>cd website-src/
+</span></span><span style="display:flex;"><span>rm -rf .git
+</span></span><span style="display:flex;"><span>rm -rf .github
+</span></span><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git remote add origin https://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/hugo-codecommit
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;first commit&#34;</span>
+</span></span><span style="display:flex;"><span>git checkout -b main
+</span></span><span style="display:flex;"><span>git push origin main
+</span></span></code></pre></div><p><img src="./images/CodeCommit-gitcommit.png" alt="Commit code to Codecommit"></p>
+<p>Tuy nhiên đâu phải muốn commit là được commit đâu. Lưu ý rằng bạn cần phải đăng nhập để commit code. Bạn phải dùng AccessToken để đăng nhập vào AWS Cli (bằng lệnh <code>aws configure</code>) rồi mới dùng Credential Helper để đăng nhập:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git config --global credential.helper <span style="color:#e6db74">&#39;!aws codecommit credential-helper $@&#39;</span>
 </span></span><span style="display:flex;"><span>git config --global credential.UseHttpPath true
 </span></span></code></pre></div><p><img src="./images/CodeCommit-login-%26-push.png" alt="Login to AWS CodeCommit"></p>
@@ -359,32 +369,67 @@ Xây dựng website cá nhân với Hugo, S3 và AWS Codepipeline | ThachPham
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">files</span>:
 </span></span><span style="display:flex;"><span>    - <span style="color:#e6db74">&#39;**/*&#39;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">base-directory</span>: <span style="color:#e6db74">&#39;public&#39;</span>
-</span></span></code></pre></div><p>Tạo file build xong rồi thì tạo CodeBuild thôi. Để tạo CodeBuild thì đầu tiên là truy cập đến <a href="https://ap-southeast-1.console.aws.amazon.com/codesuite/codebuild/projects">CodeBuild</a> sau đó chọn <strong>Create build project</strong> với các thông tin như:</p>
+</span></span></code></pre></div><p>Sau khi có file buildspec.yml, bạn có thể truy cập vào <a href="https://ap-southeast-1.console.aws.amazon.com/codesuite/codebuild/projects">CodeBuild</a> và chọn <strong>Create build project</strong>. Bạn sẽ cần điền các thông tin như sau:</p>
 <p>Cấu hình CodeBuild</p>
 <p><img src="./images/CodeBuild-config.png" alt="Tạo CodeBuild - build config"></p>
 <p>Mã nguồn</p>
 <p><img src="./images/CodeBuild-src.png" alt="Tạo CodeBuild - source"></p>
-<p>Môi trường build:</p>
+<p>Môi trường build</p>
 <p><img src="./images/CodeBuild-env.png" alt="Tạo CodeBuild - environment"></p>
-<p>Ngoài ra còn có vị trí file buildspec,&hellip; Và cuối cùng là tạo CodeBuild</p>
+<p>Bên cạnh đó, bạn cũng cần chỉ định vị trí của file buildspec.yml trong repository của mình. Sau khi hoàn tất, bạn có thể nhấn <strong>Create build project</strong> để tạo CodeBuild.</p>
 <p><img src="./images/CodeBuild-create.png" alt="Tạo CodeBuild - tạo"></p>
-<p>Tạo xong thì test thử thôi</p>
+<p>Để kiểm tra xem CodeBuild hoạt động như thế nào, bạn có thể nhấn <strong>Start build</strong> và xem kết quả.</p>
 <p><img src="./images/CodeBuild-run.png" alt="CodeBuild - chạy thử"></p>
 <h3 id="aws-codepipeline">AWS CodePipeline</h3>
-<p>Tạo một pipeline trên CodePipeline để tự động hóa quá trình triển khai website. Để cấu hình CodePipeline cần phải cấu hình các thành phần sau:</p>
-<p>tên pipeline</p>
+<p>Tạo một pipeline trên CodePipeline để tạo một quy trình liên tục từ mã nguồn đến Website. Để cấu hình CodePipeline cần phải cấu hình các thành phần sau:</p>
+<p>Tên pipeline</p>
 <p><img src="./images/CodePipeline-config-stage.png" alt="CodePipeline - config stage"></p>
 <p>Mã nguồn (CodeCommit)</p>
 <p><img src="./images/CodePipeline-source-stage.png" alt="CodePipeline - source stage"></p>
-<p>giai đoạn build (CodeBuild)</p>
+<p>Giai đoạn build (CodeBuild)</p>
 <p><img src="./images/CodePipeline-build-stage.png" alt="CodePipeline - build stage"></p>
-<p>giai đoạn deploy (S3)</p>
+<p>Giai đoạn deploy (S3)</p>
 <p><img src="./images/CodePipeline-deploy-stage.png" alt="CodePipeline - deploy stage"></p>
-<p>Sau khi tạo xong pipeline, bạn có thể kiểm tra trạng thái của các giai đoạn và xem kết quả triển khai trên S3.</p>
+<p>Khi bạn hoàn thành việc tạo pipeline, bạn có thể theo dõi tiến trình của các giai đoạn và xem kết quả triển khai trên S3.</p>
 <p>Kiểm tra xem các tệp đã được cài đặt và chuyển sang S3 chưa</p>
 <p><img src="./images/s3-success.png" alt="Check CodePipeline"></p>
 <h2 id="vấn-đề-gặp-phải-và-giải-pháp">Vấn đề gặp phải và giải pháp</h2>
+<h3 id="không-thể-push-code-lên-codecommit">Không thể push code lên CodeCommit</h3>
+<p>Vấn đề này là do bạn chưa thực hiện bước xác thực của AWS đấy. Mình biết 2 các xác thực AWS để sử dụng AWS CodeCommit:</p>
+<ul>
+<li>Sử dụng Git credentials</li>
+<li>Sử dụng AWS Access Token</li>
+</ul>
+<ol>
+<li>
+<p>Sử dụng Git Credentials</p>
+</li>
+<li>
+<p>Sử dụng AWS Access Tokens</p>
+</li>
+</ol>
+<p>Với cách này, bạn cần có một Access Token và một Credential Helper. Access Token là một chuỗi ký tự dùng để xác thực danh tính của bạn khi bạn gửi mã nguồn lên CodeCommit. Credential Helper là một công cụ giúp bạn quản lý Access Token một cách tự động.</p>
+<p>Để lấy Access Token, bạn có thể sử dụng giao diện Console bằng cách:</p>
+<p>Truy cập <strong>Security credentials</strong></p>
+<p><img src="./images/AccessToken-security-credential.png" alt="Security Credential"></p>
+<p>hoặc <a href="https://us-east-1.console.aws.amazon.com/iamv2/home#/security_credentials?section=IAM_credentials">link</a></p>
+<p>Sau đó di chuyển đến phần <strong>Access Keys</strong> và tạo Access Keys (nhớ lưu lại thông tin Access key để sử dụng ở bước tiếp theo nhé).</p>
+<p>Tiếp theo, bạn cần cài đặt AWS CLI (Command Line Interface) trên máy tính của bạn. Bạn có thể tải AWS CLI từ trang web chính thức của AWS hoặc sử dụng các công cụ quản lý gói phần mềm như pip, npm, homebrew&hellip; để cài đặt.</p>
+<p>Sau khi cài đặt xong AWS CLI, bạn cần cấu hình thông tin tài khoản AWS của bạn bằng lệnh <code>aws configure</code>. Bạn sẽ cần nhập các thông tin sau:</p>
+<ul>
+<li>AWS Access Key ID: là một chuỗi ký tự dùng để xác định tài khoản AWS của bạn.</li>
+<li>AWS Secret Access Key: là một chuỗi ký tự dùng để xác thực tài khoản AWS của bạn.</li>
+<li>Default region name: là tên của vùng mà bạn muốn sử dụng các dịch vụ của AWS. Ví dụ: ap-southeast-1 là tên của vùng Singapore.</li>
+<li>Default output format: là định dạng của kết quả trả về khi bạn sử dụng AWS CLI. Bạn có thể chọn json, text hoặc table.</li>
+</ul>
+<p>Bạn có thể tìm thấy các thông tin về AWS Access Key ID và AWS Secret Access Key trong phần <a href="https://console.aws.amazon.com/iam/home">IAM</a> của giao diện console của AWS. Bạn nên tạo một IAM User riêng cho việc sử dụng CodeCommit và gán cho nó các quyền hạn cần thiết.</p>
+<p>Sau khi cấu hình xong AWS CLI, bạn có thể lấy Access Token bằng lệnh <code>aws codecommit get-login-password</code>. Lệnh này sẽ trả về một chuỗi ký tự là Access Token của bạn.</p>
+<p>Để sử dụng Credential Helper, bạn cần cài đặt Git trên máy tính của bạn (nếu chưa có). Sau đó, bạn cần thiết lập Credential Helper bằng lệnh <code>git config --global credential.helper '!aws codecommit credential-helper $@'</code>. Lệnh này sẽ cho phép Git sử dụng Credential Helper để lấy và lưu trữ Access Token khi bạn gửi mã nguồn lên CodeCommit.</p>
+<p>Cuối cùng, bạn có thể clone repository từ CodeCommit về máy tính của bạn bằng lệnh <code>git clone https://git-codecommit.&lt;region&gt;.amazonaws.com/v1/repos/&lt;repository-name&gt;</code>. Bạn cần thay thế <region> bằng tên vùng mà bạn đã chọn khi cấu hình AWS CLI và <repository-name> bằng tên repository mà bạn đã tạo trên CodeCommit.</p>
+<p>Sau khi clone xong, bạn có thể copy các file của website Hugo vào thư mục của repository và gửi mã nguồn lên CodeCommit bằng các lệnh <code>git add .</code>, <code>git commit -m &quot;&lt;message&gt;&quot;</code> và <code>git push origin main</code>.</p>
 <h3 id="tùy-chọn-extract-file-before-deploy">Tùy chọn <strong>Extract file before deploy</strong></h3>
+<p><img src="./images/Extract-file-before-deploy.png" alt="Extract file before deploy"></p>
+<p>Khi mình tạo AWS CodePipeline, ở deploy stage mình đã có chút nhầm lần phần <em>Extract file before deploy</em>. Sau khi tìm hiểu thì khi mình bấm vào tùy chọn này thì lúc đẩu sang S3 Artifact đã được giải nén và bên cạnh đó tùy chọn <strong>Deployment path</strong> sẽ giúp chúng ta tùy chỉnh vị trí mà file được giải nén được đưa đến trong S3 Bucket</p>
 <h2 id="lời-kết">Lời kết</h2>
 <p>Đến đây, bạn đã hoàn thành việc triển khai website Hugo lên S3 Static Web bằng CodeCommit, CodeBuild và CodePipeline. Bạn có thể thử thay đổi nội dung của website trên CodeCommit và xem pipeline tự động chạy và cập nhật website trên S3. Chúc các bạn thành công!</p>
 
@@ -418,6 +463,7 @@ Xây dựng website cá nhân với Hugo, S3 và AWS Codepipeline | ThachPham
     </li>
     <li><a href="#vấn-đề-gặp-phải-và-giải-pháp">Vấn đề gặp phải và giải pháp</a>
       <ul>
+        <li><a href="#không-thể-push-code-lên-codecommit">Không thể push code lên CodeCommit</a></li>
         <li><a href="#tùy-chọn-extract-file-before-deploy">Tùy chọn <strong>Extract file before deploy</strong></a></li>
       </ul>
     </li>
