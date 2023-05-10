@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Xây dựng website cá nhân với Hugo, S3 và AWS Codepipeline on ThachPham</title>
+    <title>Xây dựng Hugo Website sử dụng các dịch vụ của AWS on ThachPham</title>
     <link>/blogs/20230419-xay-dung-trang-web-voi-hugo-s3-awscodepipeline/</link>
-    <description>Recent content in Xây dựng website cá nhân với Hugo, S3 và AWS Codepipeline on ThachPham</description>
+    <description>Recent content in Xây dựng Hugo Website sử dụng các dịch vụ của AWS on ThachPham</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 19 Apr 2023 00:00:00 +0700</lastBuildDate><atom:link href="/blogs/20230419-xay-dung-trang-web-voi-hugo-s3-awscodepipeline/index.xml" rel="self" type="application/rss+xml" />

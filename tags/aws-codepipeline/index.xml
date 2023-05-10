@@ -8,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Wed, 19 Apr 2023 00:00:00 +0700</lastBuildDate><atom:link href="/tags/aws-codepipeline/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Xây dựng website cá nhân với Hugo, S3 và AWS Codepipeline</title>
+      <title>Xây dựng Hugo Website sử dụng các dịch vụ của AWS</title>
       <link>/blogs/20230419-xay-dung-trang-web-voi-hugo-s3-awscodepipeline/</link>
       <pubDate>Wed, 19 Apr 2023 00:00:00 +0700</pubDate>
       
