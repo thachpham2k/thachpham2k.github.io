@@ -2,40 +2,40 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://thachpham2k.github.io/</loc>
+    <loc>/</loc>
     <lastmod>2023-04-19T00:00:00+07:00</lastmod>
     <priority>0</priority>
   </url><url>
-    <loc>https://thachpham2k.github.io/tags/aws-codepipeline/</loc>
+    <loc>/tags/aws-codepipeline/</loc>
     <lastmod>2023-04-19T00:00:00+07:00</lastmod>
   </url><url>
-    <loc>https://thachpham2k.github.io/blogs/</loc>
+    <loc>/blogs/</loc>
     <lastmod>2023-04-19T00:00:00+07:00</lastmod>
   </url><url>
-    <loc>https://thachpham2k.github.io/tags/hugoweb/</loc>
+    <loc>/tags/hugoweb/</loc>
     <lastmod>2023-04-19T00:00:00+07:00</lastmod>
   </url><url>
-    <loc>https://thachpham2k.github.io/tags/s3/</loc>
+    <loc>/tags/s3/</loc>
     <lastmod>2023-04-19T00:00:00+07:00</lastmod>
   </url><url>
-    <loc>https://thachpham2k.github.io/tags/</loc>
+    <loc>/tags/</loc>
     <lastmod>2023-04-19T00:00:00+07:00</lastmod>
   </url><url>
-    <loc>https://thachpham2k.github.io/blogs/20230419-xay-dung-trang-web-voi-hugo-s3-awscodepipeline/</loc>
+    <loc>/blogs/20230419-xay-dung-trang-web-voi-hugo-s3-awscodepipeline/</loc>
     <lastmod>2023-04-19T00:00:00+07:00</lastmod>
   </url><url>
-    <loc>https://thachpham2k.github.io/tags/github-action/</loc>
+    <loc>/tags/github-action/</loc>
     <lastmod>2023-04-17T00:00:00+07:00</lastmod>
   </url><url>
-    <loc>https://thachpham2k.github.io/tags/staticweb/</loc>
+    <loc>/tags/staticweb/</loc>
     <lastmod>2023-04-17T00:00:00+07:00</lastmod>
   </url><url>
-    <loc>https://thachpham2k.github.io/blogs/20230417-xay-dung-trang-web-voi-hugo-va-github/</loc>
+    <loc>/blogs/20230417-xay-dung-trang-web-voi-hugo-va-github/</loc>
     <lastmod>2023-04-17T00:00:00+07:00</lastmod>
   </url><url>
-    <loc>https://thachpham2k.github.io/gallery/</loc>
+    <loc>/gallery/</loc>
     <lastmod>2022-06-25T18:35:46+05:30</lastmod>
   </url><url>
-    <loc>https://thachpham2k.github.io/categories/</loc>
+    <loc>/categories/</loc>
   </url>
 </urlset>
