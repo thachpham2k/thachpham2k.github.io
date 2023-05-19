@@ -452,28 +452,32 @@ Xây dựng Hugo Website sử dụng các dịch vụ của AWS | ThachPham
               <div class="toc-content">
                 <nav id="TableOfContents">
   <ul>
-    <li><a href="#ý-tưởng">Ý tưởng</a></li>
-    <li><a href="#tạo-s3-static-web">Tạo S3 Static web</a>
+    <li>
       <ul>
-        <li><a href="#tạo-s3-bucket">Tạo S3 Bucket</a></li>
-        <li><a href="#s3-static-web-hosting">S3 Static Web Hosting</a></li>
-        <li><a href="#thêm-quyền-getobject">Thêm quyền getObject</a></li>
+        <li><a href="#ý-tưởng">Ý tưởng</a></li>
+        <li><a href="#tạo-s3-static-web">Tạo S3 Static web</a>
+          <ul>
+            <li><a href="#tạo-s3-bucket">Tạo S3 Bucket</a></li>
+            <li><a href="#s3-static-web-hosting">S3 Static Web Hosting</a></li>
+            <li><a href="#thêm-quyền-getobject">Thêm quyền getObject</a></li>
+          </ul>
+        </li>
+        <li><a href="#tạo-aws-codepipeline">Tạo AWS Codepipeline</a>
+          <ul>
+            <li><a href="#aws-codecommit">AWS CodeCommit</a></li>
+            <li><a href="#aws-codebuild">AWS CodeBuild</a></li>
+            <li><a href="#aws-codepipeline">AWS CodePipeline</a></li>
+          </ul>
+        </li>
+        <li><a href="#vấn-đề-gặp-phải-và-giải-pháp">Vấn đề gặp phải và giải pháp</a>
+          <ul>
+            <li><a href="#không-thể-push-code-lên-codecommit">Không thể push code lên CodeCommit</a></li>
+            <li><a href="#tùy-chọn-extract-file-before-deploy">Tùy chọn <strong>Extract file before deploy</strong></a></li>
+          </ul>
+        </li>
+        <li><a href="#lời-kết">Lời kết</a></li>
       </ul>
     </li>
-    <li><a href="#tạo-aws-codepipeline">Tạo AWS Codepipeline</a>
-      <ul>
-        <li><a href="#aws-codecommit">AWS CodeCommit</a></li>
-        <li><a href="#aws-codebuild">AWS CodeBuild</a></li>
-        <li><a href="#aws-codepipeline">AWS CodePipeline</a></li>
-      </ul>
-    </li>
-    <li><a href="#vấn-đề-gặp-phải-và-giải-pháp">Vấn đề gặp phải và giải pháp</a>
-      <ul>
-        <li><a href="#không-thể-push-code-lên-codecommit">Không thể push code lên CodeCommit</a></li>
-        <li><a href="#tùy-chọn-extract-file-before-deploy">Tùy chọn <strong>Extract file before deploy</strong></a></li>
-      </ul>
-    </li>
-    <li><a href="#lời-kết">Lời kết</a></li>
   </ul>
 </nav>
               </div>
