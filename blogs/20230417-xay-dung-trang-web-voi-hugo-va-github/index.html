@@ -293,35 +293,35 @@ Xây dựng website cá nhân với Hugo và GitHub | ThachPham
           </div>
           
           <article class="page-content  p-2">
-          <h2 id="ý-tưởng">Ý tưởng</h2>
+          <h1 id="ý-tưởng">Ý tưởng</h1>
 <p>Dự án xây dựng một trang web cá nhân là một ý tưởng đã từng ở trong đầu mình từ rất lâu. Là một dân IT, việc tạo ra một không gian riêng để chia sẻ những điều mà mình đam mê, những kiến thức mà mình tích luỹ, và những trải nghiệm mà mình đã trải qua luôn là một ý tưởng hấp dẫn đối với mình. Tuy nhiên, do công việc bận rộn và sự thiếu hụt kỹ năng lập trình frontend, dự án này đã bị hoãn lại trong một thời gian khá dài.</p>
 <p>Tuy nhiên, vào gần đây, do có cơ hội nghiên cứu và tìm hiểu về Hugo, và mình cảm thấy rất hứng thú và tự tin để triển khai ý tưởng của mình một lần nữa.</p>
 <p>Được đồng chí trong team admin VietAWS UG giới thiệu về Hugo lâu rồi nhưng gần đây mình mới được dịp tiếp xúc và tìm hiểu về nó, như thấy được đây là cơ hội để thực hiện ý tưởng, mình đã quyết định áp dụng ngay và xây dựng nên trang web này.</p>
-<h2 id="xây-dựng-trang-web-với-hugo">Xây dựng trang web với hugo</h2>
+<h1 id="xây-dựng-trang-web-với-hugo">Xây dựng trang web với hugo</h1>
 <p>Để xây dựng trang web với Hugo, bước đầu tiên vẫn là nắm vững tổng quan về nó (Bài viết chỉ là tổng quan chứ không đi sâu về mặt kĩ thuật nên mọi người muốn hiểu rõ thì chịu khó đọc document nha).</p>
-<h3 id="cài-đặt-hugo">Cài đặt Hugo</h3>
+<h2 id="cài-đặt-hugo">Cài đặt Hugo</h2>
 <p>Mình sử dụng ubuntu để host nên sử dụng apt package manager và câu lệnh như sau:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt install hugo
 </span></span></code></pre></div><p>Mọi người có thể tìm hiểu cách cái đặt ở trang <a href="https://gohugo.io/installation/">hugo installation</a></p>
-<h3 id="tạo-khung-sườn-cho-hugo">Tạo khung sườn cho hugo</h3>
+<h2 id="tạo-khung-sườn-cho-hugo">Tạo khung sườn cho hugo</h2>
 <p>Sau khi cài đặt thì đi đến tạo website đầu tiên với hugo</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>hugo new site mysite
 </span></span><span style="display:flex;"><span>cd mysite
 </span></span></code></pre></div><p>Hugo sẽ tạo 1 folder tên là mysite và đây là cấu trúc của folder mà hugo vừa tạo</p>
 <p><img src="./images/hugo%20mysite%20structure.png" alt="cấu trúc cơ bản của một hugo source"></p>
-<h3 id="themes">Themes</h3>
+<h2 id="themes">Themes</h2>
 <p>Thế là đã có khung sườn cho hugo. Công việc tiếp theo là tìm themes cho hắn. Vậy thì tìm themes ở đâu? ở trang <a href="https://themes.gohugo.io/">Hugo themes</a> này nè</p>
 <p>Sau khi lục lọi 1 hồi thì mình đã tìm đến <a href="https://hugo-profile.netlify.app/">hugo-profile theme</a></p>
 <p><img src="./images/hugo-profile%20theme.png" alt="Hugo-profile themes"></p>
 <p>Sau khi xem xét qua phần giao diện và hiển thị tiếng việt thì vẫn thấy cái theme này trông quá ư là ổn nên quất luôn😘😘</p>
-<h4 id="cấu-hình-hugo">Cấu hình hugo</h4>
+<h2 id="cấu-hình-hugo">Cấu hình hugo</h2>
 <p>Chọn được theme rồi thì thêm nó vào trong hugo project thôi. Về lệnh thì do có chút khác biệt về phần themes nên mình sử câu lệnh hơi khác so với trang <a href="https://gohugo.io/getting-started/quick-start/">Hugo quickstart</a> nên ai gặp lỗi thì có thể tham khảo document của Hugo</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cd mysite
 </span></span><span style="display:flex;"><span>git init
 </span></span><span style="display:flex;"><span>git submodule add https://github.com/gurusabarish/hugo-profile.git themes/hugo-profile
 </span></span><span style="display:flex;"><span>cp themes/hugo-profile/exampleSite/config.yaml ./
 </span></span><span style="display:flex;"><span>hugo server
-</span></span></code></pre></div><h4 id="bài-viết-đầu-tiên">Bài viết đầu tiên</h4>
+</span></span></code></pre></div><h2 id="bài-viết-đầu-tiên">Bài viết đầu tiên</h2>
 <p>Để lên bài đầu tiên thì đầu tiên vẫn phải là nghiên cứu qua cấu trúc của 1 blog được mình sử dụng</p>
 <p><img src="./images/blog-structure.png" alt="Cấu trúc của 1 bài blog"></p>
 <p>Muốn tìm hiểu kĩ hơn về phần này thì bạn có thể đọc qua về <a href="https://gohugo.io/content-management/page-bundles/">Hugo page bundles</a> trong document của hugo.</p>
@@ -343,9 +343,9 @@ Xây dựng website cá nhân với Hugo và GitHub | ThachPham
 </span></span><span style="display:flex;"><span>---
 </span></span><span style="display:flex;"><span>&lt;Nội dung bài viết được viết ở đây&gt;
 </span></span></code></pre></div><p>Thế là xem như đã tạo xong 1 hugo project cơ bản.</p>
-<h3 id="vấn-đề-gặp-phải-và-giải-pháp">Vấn đề gặp phải và giải pháp</h3>
+<h2 id="vấn-đề-gặp-phải-và-giải-pháp">Vấn đề gặp phải và giải pháp</h2>
 <p>Nhìn thì đơn giản vậy thôi, chứ do là newbie bên mảng này nên gặp bug cũng khá nhiều</p>
-<h4 id="configtoml">config.toml</h4>
+<h2 id="configtoml">config.toml</h2>
 <p>Này là do mình lên document của Hugo copy mà không chịu đọc kĩ thế là mình tạo hugo project bằng những lệnh sau:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>hugo new site website-src
 </span></span><span style="display:flex;"><span>cd website-src
@@ -358,22 +358,22 @@ Xây dựng website cá nhân với Hugo và GitHub | ThachPham
 <p><img src="./images/loi-cau-hinh.png" alt="Lỗi cấu hình Hugo"></p>
 <p>Loay hoay 1 lúc thì mới tìm được vấn để, thế là phải xóa file <code>config.toml</code> đi.</p>
 <p>Mọi người muốn hiểu rõ hơn về phần cấu hình này thì có thể đọc <a href="https://gohugo.io/getting-started/configuration/">Hugo configuration</a></p>
-<h4 id="hiển-thị-ảnh-bìa">Hiển thị ảnh bìa</h4>
+<h2 id="hiển-thị-ảnh-bìa">Hiển thị ảnh bìa</h2>
 <p>Hiển thị ảnh trong bài viết thì bình thường chứ hiển thị ảnh bìa thì nó hơi khác tí.</p>
 <p>Nếu để link banner trong thuộc tính images của page là  <code>images/banner.png</code> thì lúc hiển thị danh sách bài viết sẽ không thấy ảnh bìa còn nều để là <code>&lt;post&gt;/images/banner.png</code> thì vào bên trong bài viết sẽ gặp lỗi hiển thị ảnh bìa. Thế là phải đi lục lại bài gốc của tác giả và anh ấy sử dụng địa chỉ tuyệt đối dạng <code>/images/banner.png</code> loay hoay tìm thư mục <code>images</code> thì phát hiện nó ở trong thư mục <code>static</code> bằng ở root directory của hugo project. Kiểm tra ngay và thấy mọi thứ đã oke. Và mình đã tạo nên thư mục <code>blogs</code> bên trong <code>images</code> dùng để lưu các banner của bài viết.</p>
 <p><img src="./images/luu-anh-bia-cua-trang.png" alt="Cách lưu ảnh bìa của 1 trang"></p>
-<h4 id="mình-xóa-git-link-đến-resource-của-tác-giả">Mình xóa git link đến resource của tác giả</h4>
+<h2 id="mình-xóa-git-link-đến-resource-của-tác-giả">Mình xóa git link đến resource của tác giả</h2>
 <p>Thay vì sử dụng <code>git submodule add https://github.com/gurusabarish/hugo-profile.git themes/hugo-profile</code> thì mình lại dùng <code>git clone https://github.com/gurusabarish/hugo-profile.git</code> sau đó <code>rm -rf .git</code>.</p>
 <p>Bản thân có chỉnh sửa đôi chút qua theme source của tác giả nên sẽ không sử dụng <code>git submodule add ...</code> bởi như vậy thì github sẽ nhận diện git repo của người khác và sẽ tạo liên kết đến đó làm cho những chỉnh sửa của mình trở nên vô dụng.</p>
 <p>Hơi có chút không tôn trọng bản quyền của tác giả nhưng thôi vậy dùng tạm 😁 chân thành xin lỗi ha 😘.</p>
-<h2 id="triển-khai-website-lên-github-và-cấu-hình-github-action">Triển khai website lên github và cấu hình Github Action</h2>
+<h1 id="triển-khai-website-lên-github-và-cấu-hình-github-action">Triển khai website lên github và cấu hình Github Action</h1>
 <p>Thế là xong phần web ở local, đưa em nó lên mạng thôi 😍</p>
-<h3 id="tạo-thachpham2kgithubio">Tạo thachpham2k.github.io</h3>
+<h2 id="tạo-thachpham2kgithubio">Tạo thachpham2k.github.io</h2>
 <p>Phần này thì github viết hơi bị dễ hiểu luôn á, nên mọi người có thể tham khảo <a href="https://pages.github.com/">Tạo static website với github</a></p>
 <p>Tóm tắt thì việc cần làm ở đây là tạo 1 github repository dạng <code>&lt;username&gt;.github.io</code>.</p>
-<h3 id="tạo-website-src">Tạo website-src</h3>
+<h2 id="tạo-website-src">Tạo website-src</h2>
 <p>Tương tự bước trước đó nhưng lần này thích đặt tên là gì cũng được, đây sẽ là nơi chưa source của hugo project.</p>
-<h3 id="tạo-personal-token">Tạo Personal Token</h3>
+<h2 id="tạo-personal-token">Tạo Personal Token</h2>
 <p>Personal token là gì? Tại sao lại phải tạo nó? Nó được sử dụng khi nào?</p>
 <ul>
 <li>
@@ -400,7 +400,7 @@ Xây dựng website cá nhân với Hugo và GitHub | ThachPham
 <p><img src="./images/environment_secret.png" alt="Environment secret đã được tạo"></p>
 <p>Trong file cấu hình github action, nếu muốn sử dụng github PAT thì phải khai báo dạng</p>
 <pre tabindex="0"><code>personal_token: ${{ secrets.GITHUB_TOKEN }}
-</code></pre><h3 id="tạo-github-deploy-key">Tạo Github Deploy key</h3>
+</code></pre><h2 id="tạo-github-deploy-key">Tạo Github Deploy key</h2>
 <p>Nếu không muốn sử dụng PAT thì có 1 tùy chọn khác đó là sử dụng ssh key. Để có thể dụng cách này đầu tiên cần có 1 ssh key có thể dụng cho github.</p>
 <p>Sử dụng ssh-keygen để tạo key</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ssh-keygen -t ed25519 -C <span style="color:#e6db74">&#34;phamthach2506@gmail.com&#34;</span>
@@ -431,7 +431,7 @@ Xây dựng website cá nhân với Hugo và GitHub | ThachPham
 <li>Sử dụng: Trong file cấu hình github action, nếu muốn sử dụng github PAT thì phải khai báo dạng</li>
 </ul>
 <pre tabindex="0"><code>deploy_key: ${{ secrets.privatekey }}
-</code></pre><h3 id="tạo-github-action">Tạo Github action</h3>
+</code></pre><h2 id="tạo-github-action">Tạo Github action</h2>
 <p>Đầu tiên là tìm đến source repo (website-src) và chọn đến tab Action</p>
 <p>Ở đây tìm đến mục tìm kiếm workflow và nhập <code>Simple workflow</code></p>
 <p>Bên trong file <code>blank.yml</code> chỉnh sửa nội dung thành như thế này</p>
@@ -485,16 +485,16 @@ jobs:
           publish_branch: master
           allow_empty_commit: true
 </code></pre><p>Phần này có khá nhiều thứ, lười giải thích quá. Mọi người commit file và đợi kết quả thôi.</p>
-<h3 id="vấn-đề-gặp-phải-và-giải-pháp-1">Vấn đề gặp phải và giải pháp</h3>
+<h2 id="vấn-đề-gặp-phải-và-giải-pháp-1">Vấn đề gặp phải và giải pháp</h2>
 <p>Mục này xuất hiện gần như là điều hiển nhiên rồi, newbie mà, làm sao để tránh khỏi lỗi đây</p>
-<h4 id="sử-dụng-github-token">Sử dụng github token</h4>
+<h2 id="sử-dụng-github-token">Sử dụng github token</h2>
 <p>Đầu tiên mình sử dụng github token (được recommend sử dụng vì tính bảo mật) nhưng mà ở project này Github token không đáp ứng đủ quyền (quyền write) nên mình phải chuyển qua xài PAT.</p>
-<h4 id="sử-dụng-pat">Sử dụng PAT</h4>
+<h2 id="sử-dụng-pat">Sử dụng PAT</h2>
 <p>Vì Github token không đáp ứng được nhu cầu nên mình chuyển qua sử dụng PAT, tuy nhiên vấn đề gần tương tự đã xảy ra là mình cấu hình token và khi chạy cứ nhận về Permission deny. Lười test các permission quá nên mình chuyển qua xài Deploy key 🤣😂 để hôm này rảnh quay lại test cái PAT (hôm nào này hơi xa đó).</p>
-<h4 id="xây-dựng-file-build-cho-github-action">Xây dựng file build cho github action</h4>
+<h2 id="xây-dựng-file-build-cho-github-action">Xây dựng file build cho github action</h2>
 <p>Mình gặp chút vấn đề khi tạo file cấu hình git action.</p>
 <p>Cụ thể là khi lấy giá trị token mình sử dụng <code>personal_token: ${{ secrets.TOKEN }}</code> thay vì <code>personal_token: ${{ secrets.GITHUB_TOKEN }}</code> làm loay hoay chả biết sai ở đâu (công nhận lúc đó hơi ngáo thật).</p>
-<h2 id="lời-kết">Lời kết</h2>
+<h1 id="lời-kết">Lời kết</h1>
 <p>Bài viết ghi lại phần nào quá trình mình tạo nên trang web này. Cũng là lần đầu chơi với Hugo cũng như git action và chưa dành nhiều thời gian nghiên cứu kĩ nên kiến thức sẽ có hơi sơ xài hay có thể sai mong mọi người có thể góp ý qua fb hoặc gmail mình để ở cuối trang web</p>
 <p>Chân thành cảm ơn đã đọc hế bài viết. BYE👋👋👋</p>
 
@@ -511,30 +511,34 @@ jobs:
               <div class="toc-content">
                 <nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#ý-tưởng">Ý tưởng</a></li>
+    <li><a href="#xây-dựng-trang-web-với-hugo">Xây dựng trang web với hugo</a>
       <ul>
-        <li><a href="#ý-tưởng">Ý tưởng</a></li>
-        <li><a href="#xây-dựng-trang-web-với-hugo">Xây dựng trang web với hugo</a>
-          <ul>
-            <li><a href="#cài-đặt-hugo">Cài đặt Hugo</a></li>
-            <li><a href="#tạo-khung-sườn-cho-hugo">Tạo khung sườn cho hugo</a></li>
-            <li><a href="#themes">Themes</a></li>
-            <li><a href="#vấn-đề-gặp-phải-và-giải-pháp">Vấn đề gặp phải và giải pháp</a></li>
-          </ul>
-        </li>
-        <li><a href="#triển-khai-website-lên-github-và-cấu-hình-github-action">Triển khai website lên github và cấu hình Github Action</a>
-          <ul>
-            <li><a href="#tạo-thachpham2kgithubio">Tạo thachpham2k.github.io</a></li>
-            <li><a href="#tạo-website-src">Tạo website-src</a></li>
-            <li><a href="#tạo-personal-token">Tạo Personal Token</a></li>
-            <li><a href="#tạo-github-deploy-key">Tạo Github Deploy key</a></li>
-            <li><a href="#tạo-github-action">Tạo Github action</a></li>
-            <li><a href="#vấn-đề-gặp-phải-và-giải-pháp-1">Vấn đề gặp phải và giải pháp</a></li>
-          </ul>
-        </li>
-        <li><a href="#lời-kết">Lời kết</a></li>
+        <li><a href="#cài-đặt-hugo">Cài đặt Hugo</a></li>
+        <li><a href="#tạo-khung-sườn-cho-hugo">Tạo khung sườn cho hugo</a></li>
+        <li><a href="#themes">Themes</a></li>
+        <li><a href="#cấu-hình-hugo">Cấu hình hugo</a></li>
+        <li><a href="#bài-viết-đầu-tiên">Bài viết đầu tiên</a></li>
+        <li><a href="#vấn-đề-gặp-phải-và-giải-pháp">Vấn đề gặp phải và giải pháp</a></li>
+        <li><a href="#configtoml">config.toml</a></li>
+        <li><a href="#hiển-thị-ảnh-bìa">Hiển thị ảnh bìa</a></li>
+        <li><a href="#mình-xóa-git-link-đến-resource-của-tác-giả">Mình xóa git link đến resource của tác giả</a></li>
       </ul>
     </li>
+    <li><a href="#triển-khai-website-lên-github-và-cấu-hình-github-action">Triển khai website lên github và cấu hình Github Action</a>
+      <ul>
+        <li><a href="#tạo-thachpham2kgithubio">Tạo thachpham2k.github.io</a></li>
+        <li><a href="#tạo-website-src">Tạo website-src</a></li>
+        <li><a href="#tạo-personal-token">Tạo Personal Token</a></li>
+        <li><a href="#tạo-github-deploy-key">Tạo Github Deploy key</a></li>
+        <li><a href="#tạo-github-action">Tạo Github action</a></li>
+        <li><a href="#vấn-đề-gặp-phải-và-giải-pháp-1">Vấn đề gặp phải và giải pháp</a></li>
+        <li><a href="#sử-dụng-github-token">Sử dụng github token</a></li>
+        <li><a href="#sử-dụng-pat">Sử dụng PAT</a></li>
+        <li><a href="#xây-dựng-file-build-cho-github-action">Xây dựng file build cho github action</a></li>
+      </ul>
+    </li>
+    <li><a href="#lời-kết">Lời kết</a></li>
   </ul>
 </nav>
               </div>
