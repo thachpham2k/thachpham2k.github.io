@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Azure AZ104 on ThachPham</title>
+    <link>https://thachpham2k.github.io/tags/azure-az104/</link>
+    <description>Recent content in Azure AZ104 on ThachPham</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 17 Dec 2023 00:00:00 +0700</lastBuildDate><atom:link href="https://thachpham2k.github.io/tags/azure-az104/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Đề thi Azure AZ104</title>
+      <link>https://thachpham2k.github.io/azure-exam/az104/</link>
+      <pubDate>Sun, 17 Dec 2023 00:00:00 +0700</pubDate>
+      
+      <guid>https://thachpham2k.github.io/azure-exam/az104/</guid>
+      <description>Azure AZ104  Azure AZ104 - test1 Azure AZ104 - test2 Azure AZ104 - test3 Azure AZ104 - test4  Mục lục | Azure Practice Examsaz104-de1az104-de2az104-de3az104-de4 --  </description>
+    </item>
+    
+  </channel>
+</rss>
