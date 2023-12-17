@@ -35,6 +35,7 @@
 <meta property="article:published_time" content="2023-04-19T00:00:00+07:00" />
 <meta property="article:modified_time" content="2023-04-19T00:00:00+07:00" /><meta property="og:site_name" content="ThachPham" />
 
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Xây dựng Hugo Website sử dụng các dịch vụ của AWS"/>
 <meta name="twitter:description" content="Sẽ ra sao nếu trang web được xây dựng dựa trên các dịch vụ của AWS"/>
@@ -236,6 +237,29 @@ Xây dựng Hugo Website sử dụng các dịch vụ của AWS | ThachPham
                     </li>
                     
                     
+                    
+                    
+                    <li class="nav-item navbar-text dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Tools">
+                            Tools
+                        </a>
+                        <div class="dropdown-menu shadow-lg rounded" aria-labelledby="navbarDropdown">
+                            
+                            <a class="dropdown-item text-center nav-link" href="/aws-exam"
+                                title="AWS Exam">
+                                AWS Exam
+                            </a>
+                            
+                            <a class="dropdown-item text-center nav-link" href="/azure-exam"
+                                title="Azure Exam">
+                                Azure Exam
+                            </a>
+                            
+                        </div>
+                    </li>
+                    
+                    
 
                     
                     <li class="nav-item navbar-text">
@@ -315,23 +339,23 @@ Xây dựng Hugo Website sử dụng các dịch vụ của AWS | ThachPham
 <p><img src="./images/s3-static-web-403-response.png" alt="Lỗi 403 khi truy cập S3 static web"></p>
 <h2 id="thêm-quyền-getobject">Thêm quyền getObject</h2>
 <p>Để cho người dùng có thể truy cập vào trang web static trên S3 mà không gặp phải lỗi 403, cần phải thêm quyền truy cập cho bucket. Việc này có thể được thực hiện bằng cách truy cập vào S3 bucket, chọn tab <strong>Permissions</strong>, và chọn phần <strong>Bucket policy</strong>. Sau đó, nhập đoạn mã sau vào phần policy (nhớ điền S3 Bucket name vào phần ARN nha).</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
-</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&#34;Statement&#34;</span>: [
-</span></span><span style="display:flex;"><span>		{
-</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;Statement1&#34;</span>,
-</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&#34;Principal&#34;</span>: <span style="color:#e6db74">&#34;*&#34;</span>,
-</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
-</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&#34;Action&#34;</span>: [
-</span></span><span style="display:flex;"><span>				<span style="color:#e6db74">&#34;s3:GetObject&#34;</span>
-</span></span><span style="display:flex;"><span>			],
-</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&#34;Resource&#34;</span>: [
-</span></span><span style="display:flex;"><span>				<span style="color:#e6db74">&#34;arn:aws:s3:::&lt;S3 Bucket name&gt;/*&#34;</span>
-</span></span><span style="display:flex;"><span>			]
-</span></span><span style="display:flex;"><span>		}
-</span></span><span style="display:flex;"><span>	]
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Lúc này thử truy cập bằng S3 Static web url thì sẽ gặp lỗi 404 Not Found vì nội dung của trang web đang bị trống (không tìm thấy file index.html)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+	<span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
+	<span style="color:#f92672">&#34;Statement&#34;</span>: [
+		{
+			<span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;Statement1&#34;</span>,
+			<span style="color:#f92672">&#34;Principal&#34;</span>: <span style="color:#e6db74">&#34;*&#34;</span>,
+			<span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+			<span style="color:#f92672">&#34;Action&#34;</span>: [
+				<span style="color:#e6db74">&#34;s3:GetObject&#34;</span>
+			],
+			<span style="color:#f92672">&#34;Resource&#34;</span>: [
+				<span style="color:#e6db74">&#34;arn:aws:s3:::&lt;S3 Bucket name&gt;/*&#34;</span>
+			]
+		}
+	]
+}
+</code></pre></div><p>Lúc này thử truy cập bằng S3 Static web url thì sẽ gặp lỗi 404 Not Found vì nội dung của trang web đang bị trống (không tìm thấy file index.html)</p>
 <p><img src="./images/s3-static-web-404-response.png" alt="Lỗi 404 khi truy cập S3 static web"></p>
 <h1 id="tạo-aws-codepipeline">Tạo AWS Codepipeline</h1>
 <p>Bạn muốn triển khai trang web tự động mỗi khi cập nhật mã nguồn (trên Code Commit)? Hãy dùng AWS CodePipeline và AWS CodeBuild nhé!</p>
@@ -341,41 +365,41 @@ Xây dựng Hugo Website sử dụng các dịch vụ của AWS | ThachPham
 <p>Tiếp theo, bạn nhấn vào <strong>Create Repository</strong> và điền thông tin để tạo repository (🤣Easy game🤣🤣).</p>
 <p><img src="./images/CodeCommit-create-repo.png" alt="Tạo CodeCommit Repository"></p>
 <p>Khi đã tạo xong, bạn clone repository về máy của bạn và chép các file của website Hugo vào thư mục repository. Hướng dẫn vậy nhưng mình làm hơi khác tí, đầu tiên mình clone resource từ github về sau đó thay đổi cấu hình của git cho phù hợp và sử dụng bằng các lệnh</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git clone git@github.com:thachpham2k/website-src.git
-</span></span><span style="display:flex;"><span>cd website-src/
-</span></span><span style="display:flex;"><span>rm -rf .git
-</span></span><span style="display:flex;"><span>rm -rf .github
-</span></span><span style="display:flex;"><span>git init
-</span></span><span style="display:flex;"><span>git remote add origin https://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/hugo-codecommit
-</span></span><span style="display:flex;"><span>git add .
-</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;first commit&#34;</span>
-</span></span><span style="display:flex;"><span>git checkout -b main
-</span></span><span style="display:flex;"><span>git push origin main
-</span></span></code></pre></div><p><img src="./images/CodeCommit-gitcommit.png" alt="Commit code to Codecommit"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone git@github.com:thachpham2k/website-src.git
+cd website-src/
+rm -rf .git
+rm -rf .github
+git init
+git remote add origin https://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/hugo-codecommit
+git add .
+git commit -m <span style="color:#e6db74">&#34;first commit&#34;</span>
+git checkout -b main
+git push origin main
+</code></pre></div><p><img src="./images/CodeCommit-gitcommit.png" alt="Commit code to Codecommit"></p>
 <p>Tuy nhiên đâu phải muốn commit là được commit đâu. Lưu ý rằng bạn cần phải đăng nhập để commit code. Bạn phải dùng AccessToken để đăng nhập vào AWS Cli (bằng lệnh <code>aws configure</code>) rồi mới dùng Credential Helper để đăng nhập:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git config --global credential.helper <span style="color:#e6db74">&#39;!aws codecommit credential-helper $@&#39;</span>
-</span></span><span style="display:flex;"><span>git config --global credential.UseHttpPath true
-</span></span></code></pre></div><p><img src="./images/CodeCommit-login-%26-push.png" alt="Login to AWS CodeCommit"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git config --global credential.helper <span style="color:#e6db74">&#39;!aws codecommit credential-helper $@&#39;</span>
+git config --global credential.UseHttpPath true
+</code></pre></div><p><img src="./images/CodeCommit-login-%26-push.png" alt="Login to AWS CodeCommit"></p>
 <p>Phần này mình bỏ qua về Hugo resource, nếu muốn tìm hiểu thêm bạn chịu khó xem lại bài <a href="https://thachpham2k.github.io/blogs/20230417-xay-dung-trang-web-voi-hugo-va-github/#t%E1%BA%A1o-website-src">Blog</a> trước của mình nhé.</p>
 <h2 id="aws-codebuild">AWS CodeBuild</h2>
 <p>Trước khi đi vào tạo CodeBuild thì phải xây dựng file build trước đã. Tạo 1 file có tên là <code>buildspec.yml</code> và lưu nó ở trong repository được tạo ở bước trước. Và nội dung của file build như sau:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#ae81ff">0.2</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">phases</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">install</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">commands</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">apt-get update -y</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">echo Installing hugo</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">curl -L -o hugo.deb https://github.com/gohugoio/hugo/releases/download/v0.111.3/hugo_0.111.3_linux-amd64.deb</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">dpkg -i hugo.deb</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">hugo version</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">build</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">commands</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">hugo -v</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">artifacts</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">files</span>:
-</span></span><span style="display:flex;"><span>    - <span style="color:#e6db74">&#39;**/*&#39;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">base-directory</span>: <span style="color:#e6db74">&#39;public&#39;</span>
-</span></span></code></pre></div><p>Sau khi có file buildspec.yml, bạn có thể truy cập vào <a href="https://ap-southeast-1.console.aws.amazon.com/codesuite/codebuild/projects">CodeBuild</a> và chọn <strong>Create build project</strong>. Bạn sẽ cần điền các thông tin như sau:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#f92672">version</span>: <span style="color:#ae81ff">0.2</span>
+<span style="color:#f92672">phases</span>:
+  <span style="color:#f92672">install</span>:
+    <span style="color:#f92672">commands</span>:
+      - <span style="color:#ae81ff">apt-get update -y</span>
+      - <span style="color:#ae81ff">echo Installing hugo</span>
+      - <span style="color:#ae81ff">curl -L -o hugo.deb https://github.com/gohugoio/hugo/releases/download/v0.111.3/hugo_0.111.3_linux-amd64.deb</span>
+      - <span style="color:#ae81ff">dpkg -i hugo.deb</span>
+      - <span style="color:#ae81ff">hugo version</span>
+  <span style="color:#f92672">build</span>:
+    <span style="color:#f92672">commands</span>:
+      - <span style="color:#ae81ff">hugo -v</span>
+<span style="color:#f92672">artifacts</span>:
+  <span style="color:#f92672">files</span>:
+    - <span style="color:#e6db74">&#39;**/*&#39;</span>
+  <span style="color:#f92672">base-directory</span>: <span style="color:#e6db74">&#39;public&#39;</span>
+</code></pre></div><p>Sau khi có file buildspec.yml, bạn có thể truy cập vào <a href="https://ap-southeast-1.console.aws.amazon.com/codesuite/codebuild/projects">CodeBuild</a> và chọn <strong>Create build project</strong>. Bạn sẽ cần điền các thông tin như sau:</p>
 <p>Cấu hình CodeBuild</p>
 <p><img src="./images/CodeBuild-config.png" alt="Tạo CodeBuild - build config"></p>
 <p>Mã nguồn</p>
